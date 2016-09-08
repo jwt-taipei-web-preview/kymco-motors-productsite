@@ -5,7 +5,9 @@
     "bootstrap-sass": "~3.3.5",
     "modernizr": "~2.8.1",
     "font-awesome": "fontawesome#^4.6.3",
-    "detectizr": "^2.2.0"
+    "detectizr": "^2.2.0",
+    "slick-carousel": "^1.6.0",
+    "gsap": "^1.19.0"
   },
   "overrides": {
     "bootstrap-sass": {

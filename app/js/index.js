@@ -5,6 +5,6 @@
 	key-spacing ,curly, no-shadow, no-return-assign, no-redeclare, no-unused-vars,
 	eqeqeq, no-extend-native, quotes , no-inner-declarations*/
 /*global app */
-app.modules.ga = function(){
+app.partials.index = function(){
 
 };

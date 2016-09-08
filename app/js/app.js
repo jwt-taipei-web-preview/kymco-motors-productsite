@@ -6,7 +6,8 @@
 	eqeqeq, no-extend-native, quotes , no-inner-declarations*/
 /*global  $ */
 var app = {};
-app.partial = {};
+app.partials = {};
+app.modules = {};
 
 // var dayOfMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
@@ -33,8 +34,14 @@ var share = {
 
 
 $(function(){
+
+    // 定義modules
+	$.each(app.modules, function(name, init){
+		init();
+    });
+
     // 定義每個section
-	$.each(app.partial, function(name, init){
+	$.each(app.partials, function(name, init){
 		init();
     });
 
@@ -42,38 +49,54 @@ $(function(){
 
 	//觸發第一次調整頁面尺寸
 	$(window).trigger('resize');
+
+
 	//分享按鈕
 
-	$('.share .facebook').on('click', function(e){
-		share.facebook();
 
-		e.stopPropagation();
-
-		e.preventDefault();
-
-		return false;
+	//選單箭頭
+	$.get('img/nav/caret.svg', function(r){
+		$('svg', r).appendTo($('header nav:eq(0) a'));
 	});
 
-	$('.share .googleplus').on('click', function(e){
-		share.googleplus();
 
-		e.stopPropagation();
-
-		e.preventDefault();
-
-		return false;
+	//預載圖片
+	var imagePreload = {}, background = {};
+	$('figure[data-src]').each(function(idx, ele){
+		if($(ele).attr('data-src')){
+			imagePreload[$(ele).attr('data-src')] = false;
+			background[$(ele).attr('data-src')] = ele;
+		}
 	});
 
-	$('.share .email').on('click', function(e){
-		share.email();
+	$.each(imagePreload, function(src, stat){
+		var img = new Image();
+		img.onload = function(){
+			imagePreload[src] = true;
+			var alldone = true;
+			$.each(imagePreload, function($s, $done){
+				alldone = $done && alldone;
+			});
 
-		e.stopPropagation();
+			//載入後 加到背景
+			$(background[src]).css('background-image', 'url(' + src + ')');
 
-		e.preventDefault();
-
-		return false;
+			if(alldone){
+				imageLoaded();
+			}
+		};
+		img.src = src;
 	});
 
+	function imageLoaded(){
+		$.each(imagePreload, function(src, stat){
+			$(background[src]).css('background-image', 'url(' + src + ')');
+		});
+		var litMotor = $('.blend').prev();
+		$('.blend').css('background-image',
+			'url(' + $('.blend').attr('data-src') + '), url(' + $(litMotor).attr('data-src') + ')');
+	}
+	//
 });
 
 
