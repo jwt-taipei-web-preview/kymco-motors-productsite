@@ -1,0 +1,22 @@
+language: node_js
+env:
+  global:
+  - GH_USER: nelson
+node_js:
+- '0.12'
+install:
+- npm install gulp bower -g 
+- npm install
+- bower install
+- gulp build
+- mkdir out
+- cp -r dist/* out
+- cd out
+- git init
+- git config user.name nelson119
+- git config user.email nelson119@outlook.com
+- git remote add origin $GH_REF
+- git add .
+- git commit -m "Deployed to Github Pages"
+- git push -f --quiet origin master
+- cd ..

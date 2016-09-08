@@ -1,0 +1,186 @@
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+.vertical-top{
+	&:before{
+		height: 100%;
+		content:'';
+		display: inline-block;
+		vertical-align: top;
+	}
+	>*{
+		display: inline-block;
+		vertical-align: top;
+	}
+}
+
+.vertical-middle{
+	&:before{
+		height: 100%;
+		content:'';
+		display: inline-block;
+		vertical-align: middle;
+	}
+	>*{
+		display: inline-block;
+		vertical-align: middle;
+	}
+}
+.vertical-bottom{
+	&:before{
+		height: 100%;
+		content:'';
+		display: inline-block;
+		vertical-align: bottom;
+	}
+	>*{
+		display: inline-block;
+		vertical-align: bottom;
+	}
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.clear {
+  clear: both;
+}
+/* Space out content a bit */
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-feature-settings: "liga";
+	font-style: normal;
+	text-rendering: optimizelegibility;
+	font-family: $main-font,cursive;
+	font-size: $base-font-size;
+	letter-spacing:0.5px;
+	word-spacing:0.5px;
+	overflow-x:hidden;
+	color: $font-default-color;
+	position:relative;
+	background: #000;
+	color: #fff;
+
+	::selection,::-moz-selection {
+		background:rgba(0,0,0,0.05);
+		color:inherit;
+	}
+	a:focus{
+		outline: none;
+	}
+	
+	.nav{
+		>li{
+			>a{
+				border-radius: 0;
+				&:hover,&:focus {
+					background-color: inherit;
+				}
+			}
+			&.active{
+				>a{
+					color: $font-default-color;
+					background-color: transparent;
+					&:hover,&:active,&:focus{
+						background-color: transparent;
+						color: inherit;
+					}
+				}
+			}
+		}
+	}
+
+	a{
+		color: $font-default-color;
+		&:hover,&.active,&:focus{
+			color: inherit;
+			text-decoration: none;
+		}
+	}
+
+}
+
+html{
+	min-width: 320px;
+	background: #000;
+	.container{
+		min-width: 320px;
+	}
+	&.ie,&.firefox.windows{
+		body{
+			font-family:  $main-font, helvetica neue,lantinghei, 微軟正黑體, microsoft jhenghei, verdana, arial, tahoma cursive;
+		}
+	}
+
+	&.overlay-m{
+		&:before{
+			@media screen and (max-width: 768px) {
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				position: fixed;
+				content: '';
+				background: rgba(0,0,0,0.6);
+				z-index: 2;
+			}
+		}
+	}
+	@media screen and (max-width: 768px) {		
+		max-width: 100vw;
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+}
+
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+	.container {
+		max-width: 1200px;
+	}
+
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+
+}

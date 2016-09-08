@@ -1,0 +1,96 @@
+// Glyphicons font path
+$icon-font-path:        "../fonts/";
+
+// Grid settings
+$main-sm-columns:       12;
+$sidebar-sm-columns:    4;
+
+// Colors
+$brand-primary:         #27ae60;
+
+// @font-face { 
+// 	font-family: 'msjh-arial'; 
+// 	src:  local("Lantinghei")
+// 		, local('Noto Sans TC')
+// 		, local('微軟正黑體')
+// 		, local("STHeiti")
+// 		, local("メイリオ")
+// 		, local("Meiryo")
+// 		, local("ヒラギノ角ゴ Pro w3")
+// 		, local("Hiragino Kaku Gothic Pro")
+// 		, local("Osaka")
+// 		, local("STXihei")
+// 		, local("HEITI TC")
+// 		, local("黑體-繁")
+// 		, local("黑體");
+// }
+// @font-face {
+// 	font-family: 'msjh-arial';
+// 	src: local('Arial')
+// 		, local("Segoe UI")
+// 		, local("Verdana")
+// 		, local("ＭＳ Ｐゴシック")
+// 		, local("MS P Gothic")
+// 		, local("Helvetica Neue")
+// 		, local("Helvetica")
+// 		, local("sans-serif");
+// 	font-weight: normal;
+// 	font-style: normal;
+// 	unicode-range: U+00-024F;
+// }
+
+$main-font: 'Roboto';
+$base-font-size: 13px;
+$base-font-size-num: 13;
+$base-font-size-sm: 10px;
+
+.font-default{
+	font-family: $main-font, cursive;
+}
+.fontsize-reset {
+	font-size: $base-font-size;
+}
+
+$browser-xs-viewport: 320; // Default
+$browser-sm-viewport: 768; // Default
+$browser-lg-viewport: 1366; // Default
+
+@function vwsm($pixels, $context: $browser-sm-viewport) {
+  @return #{$pixels/$context*100}vw;
+}
+
+@function vwxs($pixels, $context: $browser-xs-viewport) {
+  @return #{$pixels/$context*100}vw;
+}
+
+@function vwlg($pixels, $context: $browser-lg-viewport) {
+  @return #{$pixels/$context*100}vw;
+}
+
+@mixin linear-gradient($direction, $color-stops) {
+  background: nth(nth($color-stops, 1), 1);
+  background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+  background: linear-gradient($direction, $color-stops);
+}
+
+@for $i from 6 to 150 {
+	.fontsize-#{$i} {
+		font-size: percentage($i/$base-font-size-num);
+	}
+}
+
+@media screen and (max-width: 768px) {
+	@for $i from 6 to 150 {
+		.fontsize-sm-#{$i} {
+			font-size: vwsm($i);
+		}
+	}
+}
+
+.text-bold{
+	font-weight: 700;
+}
+
+$font-default-color: #000;
+$font-default-hover-color: #333;
+$font-white-color: #fff;
