@@ -15,6 +15,8 @@ app.modules.kv = function(){
 		arrows: false,
 		speed: 750,
 		autoplay: true,
+		pauseOnFocus: false,
+		pauseOnHover: false,
 		autoplaySpeed: 6000
 	});
 	$('.slick-slide').each(function(){
@@ -40,7 +42,7 @@ app.modules.kv = function(){
 		$.each(timelines, function(i, tl){
 			tl.pause();
 		});
-	}).trigger('init');
+	}).trigger('init').slick('slickGoTo', 0);
 
 	//第一個輪播內容
 	var tl1 = timelines[0];
