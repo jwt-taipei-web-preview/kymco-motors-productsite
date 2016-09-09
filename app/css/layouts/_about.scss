@@ -1,0 +1,27 @@
+nav.about{
+	z-index:10;
+	position: fixed;
+	right: 65px;
+	top: 45px;
+	a{
+		color: #fff;
+		img{
+			margin-right: 10px;
+		}
+		&.avatar{
+			img{
+				width: 17px;
+				height:20px;
+			}
+		}
+		&.worldwide{
+			img{
+				width: 17px;
+				height:17px;
+			}
+		}
+		&+a{
+			margin-left: 35px;
+		}
+	}
+}

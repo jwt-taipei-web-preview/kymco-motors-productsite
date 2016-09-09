@@ -8,14 +8,14 @@
 app.modules.kv = function(){
 
 	//輪播
-	$('.kv').slick({
+	var timelines = [];
+	$('.kv.slide').slick({
 		dots: false,
 		fade: true,
 		arrows: false,
 		autoplay: true,
 		autoplaySpeed: 10000
 	});
-	var timelines = [];
 	$('.slick-slide').each(function(){
 		var tl = new TimelineMax({
 			paused: true,
@@ -26,10 +26,24 @@ app.modules.kv = function(){
 		});
 		timelines.push(tl);
 	});
+	$('.kv.slide').on('init', function(container, slide){
+		timelines[0].play();
+	})
+	.on('afterChange', function(container, slide){
+		var idx = $('.slick-current').index();
+		if($('.slick-current').index() === 0){
+			timelines[idx].play();
+		}
+	})
+	.on('beforeChange', function(container, slide){
+		$.each(timelines, function(i, tl){
+			tl.pause();
+		});
+	}).trigger('init');
 
 	//第一個輪播內容
 	var tl1 = timelines[0];
-	var ele1 = $('.kv .slick-slide:eq(0) figure.blend');
+	var ele1 = $('.kv.slide .slick-slide:eq(0) figure.blend');
 	TweenMax.set(ele1,{
 		opacity: 0
 	});
@@ -39,22 +53,9 @@ app.modules.kv = function(){
 	tl1.add(TweenMax.to(ele1, 0.5, {
 		opacity: 0
 	}));
-	tl1.play();
 	// console.log(tl1, ele1);
 
 	//-
 
 
-	$('.kv').on('afterChange', function(container, slide){
-		var idx = $('.slick-current').index();
-		console.log(timelines[idx]);
-		if($('.slick-current').index() === 0){
-			timelines[idx].play();
-		}
-	});
-	$('.kv').on('beforeChange', function(container, slide){
-		$.each(timelines, function(i, tl){
-			tl.pause();
-		});
-	});
 };

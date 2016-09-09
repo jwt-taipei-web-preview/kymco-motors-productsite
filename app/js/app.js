@@ -59,17 +59,46 @@ $(function(){
 		$('svg', r).appendTo($('header nav.menu aide >a'));
 	});
 
+
+	//選單與內容切換模式
 	var containerClasses = 'container';
 	function changeViewport(stat){
 		$('.' + containerClasses).attr('class', containerClasses + ' ' + stat);
 	}
 
+	var kvkeep = $('.kv.keep');
 
 	$('header nav.menu li').on('click', function(){
-		changeViewport('inner-page');
+		//點擊主選單後動作
+		var currentKv = $('.kv.slide .slick-current figure').css('background-image');
+		console.log(currentKv);
+		$('figure', kvkeep).css('background-image', currentKv);
+		kvkeep.removeClass('hide');
+		$('.kv.slide').slick('unslick');
+		setTimeout(function(){
+			changeViewport('inner-page');
+		}, 10);
+
+		$('header nav.menu li').removeClass('active');
+		$(this).addClass('active');
+		$(this).parents('aside').addClass('on').siblings().removeClass('on');
+
 	});
 	$('.expand').on('click', function(){
+		//點擊主選單空白區塊的動作
+		$('header nav.menu li').removeClass('active');
+		$('header nav.menu aside').removeClass('on');
 		changeViewport('menu-expand');
+		setTimeout(function(){
+			$('.kv.slide').slick({
+				dots: false,
+				fade: true,
+				arrows: false,
+				autoplay: true,
+				autoplaySpeed: 10000
+			});
+			kvkeep.addClass('hide');
+		}, 750);
 	})
 
 	//預載圖片
@@ -94,6 +123,7 @@ $(function(){
 			$(background[src]).css('background-image', 'url(' + src + ')');
 
 			if(alldone){
+				//全部圖片下載完成
 				imageLoaded();
 			}
 		};

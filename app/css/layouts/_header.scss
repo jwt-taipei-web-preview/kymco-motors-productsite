@@ -65,7 +65,7 @@ header {
 				transition-duration: 0.5s;
 				transition-delay: 0.1s;
 			}
-			&:hover{
+			&:hover, &.on{
 				>a{
 					padding-left: 88px;
 					color: #e60012;

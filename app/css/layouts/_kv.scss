@@ -9,18 +9,22 @@
 	width: 100%;
 	height: 100%;
 	transition: 0.65s ease-out;
+	overflow: hidden;
 
 
 	li{
 		width: 100%;
 		height: 100vh;
+
 		figure{
-			width: 100%;
+			width: 100vw;
 			height: 100%;
 			position: absolute;
 			top:0;
-			left:0;
+			left:50%;
+			margin-left: -50vw;
 			background-size: cover;
+			background-position: center;
 			&.blend{
 				background-blend-mode: lighten;
 			}
@@ -39,9 +43,39 @@
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#66000000', endColorstr='#007db9e8',GradientType=0 ); /* IE6-9 */
 		}
 	}
+
+	&.keep{
+		width: 100vw;
+		transition: 0.65s ease-out;
+		figure{
+			position: absolute;
+			width: 100vw;
+			height: 100%;
+			left:50%;
+			margin-left: -50vw;
+			background-position: center center; 
+			background-size: cover; 
+		}
+		&:after{
+			position: absolute;
+			top: 0;
+			left:0;
+			content: '';
+			width: 100%;
+			height: 120%;
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,7db9e8+100&0.4+0,0+100 */
+			background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(125,185,232,0) 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(125,185,232,0) 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(125,185,232,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#66000000', endColorstr='#007db9e8',GradientType=0 ); /* IE6-9 */
+		}
+	}
 }
 .inner-page{
 	.kv{
-		width: 300px;
+		width: 360px;
+		&.keep{
+			transition: 0.65s ease-out;
+		}
 	}
 }
