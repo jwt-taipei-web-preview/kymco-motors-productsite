@@ -99,7 +99,7 @@ $(function(){
 			});
 			kvkeep.addClass('hide');
 		}, 750);
-	})
+	});
 
 	//預載圖片
 	var imagePreload = {}, background = {};
