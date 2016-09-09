@@ -56,7 +56,7 @@ $(function(){
 
 	//選單箭頭
 	$.get('img/nav/caret.svg', function(r){
-		$('svg', r).appendTo($('header nav.menu aide >a'));
+		$('svg', r).appendTo($('header nav.menu aside >a'));
 	});
 
 
