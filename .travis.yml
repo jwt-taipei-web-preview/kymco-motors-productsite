@@ -18,5 +18,5 @@ install:
 - git remote add origin $GH_REF
 - git add .
 - git commit -m "Deployed to Github Pages"
-- git push -f --quiet origin master
+- git push -f --quiet origin gh-pages
 - cd ..
