@@ -23,9 +23,6 @@ header {
 			display: block;
 			color: #fff;
 
-			&+a{
-				margin-top: 60px;
-			}
 
 			svg{
 				transition-duration: 0.25s;
@@ -39,6 +36,9 @@ header {
 
 		}
 		aside{
+			&+aside{
+				margin-top: 60px;
+			}
 			ul{
 				margin:0;
 				padding:0;
