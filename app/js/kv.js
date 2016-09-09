@@ -13,8 +13,9 @@ app.modules.kv = function(){
 		dots: false,
 		fade: true,
 		arrows: false,
+		speed: 750,
 		autoplay: true,
-		autoplaySpeed: 10000
+		autoplaySpeed: 6000
 	});
 	$('.slick-slide').each(function(){
 		var tl = new TimelineMax({
