@@ -5,6 +5,10 @@ nav.about{
 	top: 45px;
 	a{
 		color: #fff;
+
+		&:hover{
+			color: #C30D23;
+		}
 		img{
 			margin-right: 10px;
 		}

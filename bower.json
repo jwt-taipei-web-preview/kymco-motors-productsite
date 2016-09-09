@@ -7,8 +7,7 @@
     "font-awesome": "fontawesome#^4.6.3",
     "detectizr": "^2.2.0",
     "slick-carousel": "^1.6.0",
-    "gsap": "^1.19.0",
-    "html2canvas": "^0.4.1"
+    "gsap": "^1.19.0"
   },
   "overrides": {
     "bootstrap-sass": {

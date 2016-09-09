@@ -77,6 +77,9 @@ header {
 				}
 				li{
 					margin-top: 0!important;
+					a:hover{
+						color: #e60012;
+					}
 					@for $i from 1 to 5 {
 						$delay : 0.1 + (0.02 * $i);
 						&:nth-child(#{$i}) {
