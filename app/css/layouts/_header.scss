@@ -71,8 +71,11 @@ header {
 					color: #e60012;
 					background:#0c0407;
 					transition-delay: 0s;
-					svg .st0{
-						stroke: #e60012;
+					svg{
+						transform: rotateZ(0deg); 
+						.st0{
+							stroke: #e60012;
+						}
 					}
 				}
 				li{
