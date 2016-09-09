@@ -56,9 +56,21 @@ $(function(){
 
 	//選單箭頭
 	$.get('img/nav/caret.svg', function(r){
-		$('svg', r).appendTo($('header nav:eq(0) a'));
+		$('svg', r).appendTo($('header nav.menu aide >a'));
 	});
 
+	var containerClasses = 'container';
+	function changeViewport(stat){
+		$('.' + containerClasses).attr('class', containerClasses + ' ' + stat);
+	}
+
+
+	$('header nav.menu li').on('click', function(){
+		changeViewport('inner-page');
+	});
+	$('.expand').on('click', function(){
+		changeViewport('menu-expand');
+	})
 
 	//預載圖片
 	var imagePreload = {}, background = {};

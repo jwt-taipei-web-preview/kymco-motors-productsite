@@ -12,7 +12,7 @@ app.modules.kv = function(){
 		dots: false,
 		fade: true,
 		arrows: false,
-		// autoplay: true,
+		autoplay: true,
 		autoplaySpeed: 10000
 	});
 	var timelines = [];
@@ -20,6 +20,7 @@ app.modules.kv = function(){
 		var tl = new TimelineMax({
 			paused: true,
 			onComplete: function(){
+				tl.seek(0);
 				tl.play();
 			}
 		});
@@ -29,12 +30,16 @@ app.modules.kv = function(){
 	//第一個輪播內容
 	var tl1 = timelines[0];
 	var ele1 = $('.kv .slick-slide:eq(0) figure.blend');
-	tl1.add(TweenMax.to(ele1, 0.8, {
-		backgroundPosiiton: '10px 0, 0 0'
+	TweenMax.set(ele1,{
+		opacity: 0
+	});
+	tl1.add(TweenMax.to(ele1, 1.5, {
+		opacity: 1
 	}));
-	tl1.add(TweenMax.to(ele1, 0.8, {
-		backgroundPosiiton: '-10px 0, 0 0'
+	tl1.add(TweenMax.to(ele1, 0.5, {
+		opacity: 0
 	}));
+	tl1.play();
 	// console.log(tl1, ele1);
 
 	//-
