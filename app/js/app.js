@@ -101,6 +101,11 @@ $(function(){
 		}, 750);
 	});
 
+
+	$('.burger').on('click', function(){
+		$('header').toggleClass('on');
+	});
+
 	//預載圖片
 	var imagePreload = {}, background = {};
 	$('figure[data-src]').each(function(idx, ele){

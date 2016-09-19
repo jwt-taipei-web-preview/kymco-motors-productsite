@@ -149,6 +149,151 @@ header {
 		height:100%;
 
 	}
+
+
+	@media screen and (max-width: 768px) {
+		background: #1b1b1b;
+		height: 88px;
+		height: vwxs(88);
+		overflow-y: hidden;
+		width: 100%;
+
+		&.on{
+			height: auto;
+			.bars{
+				opacity: 0;
+			}
+			.burger .x{
+				opacity: 1;
+			}
+
+		}
+
+
+		h1{
+			@include xsItem(262, 44, 26, 0, 24, 0);
+
+			img{
+				@include xsSubItem();
+			}
+		}
+
+		nav.social{
+			position: fixed;
+			bottom:0;
+			left:0;
+			padding:0;
+			width: 100%;
+			height: vwxs(75);
+			line-height: vwxs(75);
+			a{
+				width: percentage(115/640);
+				height: 100%;
+
+				&:nth-child(1){
+					background-size: vwxs(35) vwxs(30);
+				}
+				&:nth-child(2){
+					background-size: vwxs(18) vwxs(36);
+				}
+				&:nth-child(3){
+					background-size: vwxs(33) vwxs(24);
+				}
+				&:nth-child(5){
+					background-size: vwxs(30) vwxs(24);
+				}
+			}
+			hr{
+				margin-top: vwxs(20);
+				margin-bottom: vwxs(20);
+				height: vwxs(35);
+				background: #b3b1b2;
+			}
+		}
+
+		.burger{
+			@include xsItem(40, 28, 28, 0, 0, 24);
+			.x{
+				opacity: 0;
+			}
+			img{
+				@include xsSubItem();
+			}
+		}
+		nav.menu{
+			background: #1b1b1b;
+			height: auto;
+			margin-top: xsp(85);
+			padding-bottom: 0.5em;
+			>aside{
+				@include xsItem(640, 60, 10, 10, 0, 24);
+				position:relative;
+				height: auto;
+				a{
+					@include xsSubItem();
+					height: 2.5em;
+					line-height: 2.5em;
+					svg{
+						display: none;
+					}
+				}
+				a{
+					padding-left: xsp(60);
+				}
+				>a{
+					z-index: 1;
+					background: #1b1b1b;
+				}
+				&:hover,&.on{
+					>a{
+						padding-left: xsp(60);
+						background: #1b1b1b;
+					}
+
+					ul{
+						margin-top: xsp(0);
+						position:relative;
+						height: auto;
+						li{
+							@include xsItem(640, 0, 10, 10, 0, 24);
+							position:relative;
+							height: 1.5em;
+							line-height: 1.5em;
+							a{
+								padding-left: xsp(60);
+								@include xsSubItem();
+								height: 1.5em;
+							}
+						}
+					}
+				}
+				&+aside{
+					margin-top: xsp(10);
+				}
+			}
+		}
+
+		nav.about{
+			background: #1b1b1b;
+			position: relative;
+			padding-bottom: xsp(40);
+			top:0;
+			left:0;
+			a{
+				padding-left: xsp(60);
+				@include xsSubItem();
+				display: block;
+				position:relative;
+				height: 1.8em;
+				vertical-align: bottom;
+
+				&+a{
+					margin:0;
+				}
+			}
+		}
+	}
+
 }
 
 body.overlay{
