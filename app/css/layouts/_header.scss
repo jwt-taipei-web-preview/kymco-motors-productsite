@@ -50,9 +50,6 @@ header {
 					transition-duration: 0.35s;
 					a{
 						padding:0;
-
-						&:hover{
-						}
 					}
 					@for $i from 1 to 5 {
 						&:nth-child(#{$i}) {
