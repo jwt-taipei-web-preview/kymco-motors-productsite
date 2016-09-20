@@ -29,6 +29,25 @@ nav.about{
 			margin-left: 35px;
 		}
 	}
+	@media screen and (max-width: 768px) {
+		background: #1b1b1b;
+		position: relative;
+		padding-bottom: xsp(40);
+		top:0;
+		left:0;
+		a{
+			padding-left: xsp(60);
+			@include xsSubItem();
+			display: block;
+			position:relative;
+			height: 1.8em;
+			vertical-align: bottom;
+
+			&+a{
+				margin:0;
+			}
+		}
+	}
 }
 
 

@@ -236,7 +236,6 @@ header {
 			background: #1b1b1b;
 			height: auto;
 			margin-top: xsp(85);
-			padding-bottom: 0.5em;
 			>aside{
 				@include xsItem(640, 60, 10, 10, 0, 24);
 				position:relative;
@@ -280,26 +279,6 @@ header {
 				}
 				&+aside{
 					margin-top: xsp(10);
-				}
-			}
-		}
-
-		nav.about{
-			background: #1b1b1b;
-			position: relative;
-			padding-bottom: xsp(40);
-			top:0;
-			left:0;
-			a{
-				padding-left: xsp(60);
-				@include xsSubItem();
-				display: block;
-				position:relative;
-				height: 1.8em;
-				vertical-align: bottom;
-
-				&+a{
-					margin:0;
 				}
 			}
 		}
