@@ -82,6 +82,7 @@ $(function(){
 		$('header nav.menu li').removeClass('active');
 		$(this).addClass('active');
 		$(this).parents('aside').addClass('on').siblings().removeClass('on');
+		$('header').removeClass('on');
 
 	});
 	$('.expand').on('click', function(){

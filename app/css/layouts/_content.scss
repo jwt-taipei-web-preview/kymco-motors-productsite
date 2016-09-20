@@ -8,4 +8,13 @@
 	top: 0;
 	width: calc(100% - 360px);
 	height: 100%;
+	.inner{
+		height: 100%;
+		overflow:auto;
+	}
+	@media screen and (max-width: 768px) {
+		width: 100%;
+		padding-top: xsp(88);
+		padding-bottom: xsp(75);
+	}
 }

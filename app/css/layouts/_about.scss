@@ -30,3 +30,13 @@ nav.about{
 		}
 	}
 }
+
+
+.inner-page{
+	nav.about{
+		display: none;
+		@media screen and (max-width: 768px) {
+			display: inherit;
+		}
+	}
+}

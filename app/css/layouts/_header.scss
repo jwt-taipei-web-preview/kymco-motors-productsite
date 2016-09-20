@@ -221,7 +221,7 @@ header {
 				top:0;
 				width: 15%;
 				height: 100%;
-				background: url(../common/blank.png) ;
+				background: url(../img/common/blank.png) ;
 				content:'';
 			}
 		}
@@ -272,6 +272,7 @@ header {
 						li{
 							@include xsItem(640, 0, 10, 10, 0, 24);
 							position:relative;
+							padding-left:0;
 							height: 1.5em;
 							line-height: 1.5em;
 							a{
