@@ -246,8 +246,8 @@ header {
 				height: auto;
 				a{
 					@include xsSubItem();
-					height: 2.5em;
-					line-height: 2.5em;
+					height: 1.5em;
+					line-height: 1.5em;
 					padding-left: xsp(60);
 					svg{
 						display: none;
