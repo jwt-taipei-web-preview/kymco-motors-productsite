@@ -212,11 +212,20 @@ header {
 		}
 
 		.burger-container{
-			height: 100%;
 			width: 20%;
-			display: block;
 			float: right;
+			height: 100%;
+			&:before{
+				position: absolute;
+				right: 0;
+				top:0;
+				width: 15%;
+				height: 100%;
+				background: url(../common/blank.png) ;
+				content:'';
+			}
 		}
+
 		.burger{
 			@include xsItem(40, 28, 28, 0, 0, 24);
 			.x{

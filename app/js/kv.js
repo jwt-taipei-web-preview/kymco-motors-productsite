@@ -51,17 +51,19 @@ app.modules.kv = function(){
 	}).trigger('init').slick('slickGoTo', 0);
 
 	//第一個輪播內容
-	var tl1 = timelines[0];
-	var ele1 = $('.kv.slide .slick-slide:eq(0) figure.blend');
-	TweenMax.set(ele1,{
-		opacity: 0
-	});
-	tl1.add(TweenMax.to(ele1, 1.5, {
-		opacity: 1
-	}));
-	tl1.add(TweenMax.to(ele1, 0.5, {
-		opacity: 0
-	}));
+	if(timelines[0]){
+		var tl1 = timelines[0];
+		var ele1 = $('.kv.slide .slick-slide:eq(0) figure.blend');
+		TweenMax.set(ele1,{
+			opacity: 0
+		});
+		tl1.add(TweenMax.to(ele1, 1.5, {
+			opacity: 1
+		}));
+		tl1.add(TweenMax.to(ele1, 0.5, {
+			opacity: 0
+		}));
+	}
 	// console.log(tl1, ele1);
 
 	//-
