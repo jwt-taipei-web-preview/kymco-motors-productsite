@@ -83,6 +83,9 @@
 			width: 100%;
 			height: 0;
 			padding-top: xsp(88);
+			&.keep{
+				transition: 0.05s ease-out;
+			}
 		}
 	}
 }
