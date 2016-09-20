@@ -219,8 +219,8 @@ header {
 				position: absolute;
 				right: 0;
 				top:0;
-				width: 15%;
-				height: 100%;
+				width: 100px;
+				height: 100px;
 				background: url(../img/common/blank.png) ;
 				content:'';
 			}
@@ -248,12 +248,10 @@ header {
 					@include xsSubItem();
 					height: 2.5em;
 					line-height: 2.5em;
+					padding-left: xsp(60);
 					svg{
 						display: none;
 					}
-				}
-				a{
-					padding-left: xsp(60);
 				}
 				>a{
 					z-index: 1;

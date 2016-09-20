@@ -7,7 +7,8 @@
     "font-awesome": "fontawesome#^4.6.3",
     "detectizr": "^2.2.0",
     "slick-carousel": "^1.6.0",
-    "gsap": "^1.19.0"
+    "gsap": "^1.19.0",
+    "hammerjs": "^2.0.8"
   },
   "overrides": {
     "bootstrap-sass": {
