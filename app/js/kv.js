@@ -30,11 +30,17 @@ app.modules.kv = function(){
 		timelines.push(tl);
 	});
 	$('.kv.slide').on('init', function(container, slide){
-		timelines[0].play();
+		var w = $(window).width();
+		if(w > 768){
+			timelines[0].play();
+		}else{
+			timelines[0].pause();
+		}
 	})
 	.on('afterChange', function(container, slide){
+		var w = $(window).width();
 		var idx = $('.slick-current').index();
-		if($('.slick-current').index() === 0){
+		if($('.slick-current').index() === 0 && w > 768){
 			timelines[idx].play();
 		}
 	})

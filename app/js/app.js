@@ -71,7 +71,7 @@ $(function(){
 	$('header nav.menu li').on('click', function(){
 		//點擊主選單後動作
 		var currentKv = $('.kv.slide .slick-current figure').css('background-image');
-		console.log(currentKv);
+		// console.log(currentKv);
 		$('figure', kvkeep).css('background-image', currentKv);
 		kvkeep.removeClass('hide');
 		$('.kv.slide').slick('unslick');
@@ -100,7 +100,28 @@ $(function(){
 			kvkeep.addClass('hide');
 		}, 750);
 	});
+	// $(window).on('resize', function(){
+	// 	var w = $(window).width();
+	// 	if(w > 768){
 
+	// 		setTimeout(function(){
+	// 			$('.kv.slide').slick({
+	// 				dots: false,
+	// 				fade: true,
+	// 				arrows: false,
+	// 				autoplay: true,
+	// 				autoplaySpeed: 10000
+	// 			});
+	// 			kvkeep.addClass('hide');
+	// 		}, 750);
+	// 	}else{
+	// 		var currentKv = $('.kv.slide .slick-current figure').css('background-image');
+	// 		$('figure', kvkeep).css('background-image', currentKv);
+	// 		kvkeep.removeClass('hide');
+	// 		$('.kv.slide').slick('unslick');
+	// 	}
+
+	// });
 
 	$('.burger').on('click', function(){
 		$('header').toggleClass('on');
