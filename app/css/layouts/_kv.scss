@@ -8,7 +8,7 @@
 	top: 0;
 	width: 100%;
 	height: 100%;
-	transition: 0.65s ease-out;
+	transition: 0.45s ease-out;
 	overflow: hidden;
 
 
@@ -46,7 +46,7 @@
 
 	&.keep{
 		width: 100vw;
-		transition: 0.65s ease-out;
+		transition: 0.45s ease-out;
 		figure{
 			position: absolute;
 			width: 100vw;
@@ -75,8 +75,24 @@
 	.kv{
 		width: 360px;
 		&.keep{
-			transition: 0.65s ease-out;
+			transition: 0.45s ease-out;
 		}
+	}
+	@media screen and (max-width: 768px) {
+		.kv{
+			width: 100%;
+			height: 0;
+			padding-top: xsp(88);
+			&.keep{
+				transition: 0.05s ease-out;
+			}
+		}
+	}
+}
+.page-expand{
+	.kv{
+		width: 0;
+		transition: 0.25s ease-out;
 	}
 	@media screen and (max-width: 768px) {
 		.kv{

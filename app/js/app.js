@@ -58,6 +58,12 @@ $(function(){
 	$.get('img/nav/caret.svg', function(r){
 		$('svg', r).appendTo($('header nav.menu aside >a'));
 	});
+	$('[data-icon]').each(function(i,d){
+		$.get($(d).attr('data-icon'), function(r){
+			$('svg', r).appendTo($(d));
+		});
+
+	});
 
 
 	//選單與內容切換模式
@@ -68,16 +74,17 @@ $(function(){
 
 	var kvkeep = $('.kv.keep');
 
-	$('header nav.menu li').on('click', function(){
+	$('header nav.menu li[data-content]').on('click', function(){
 		//點擊主選單後動作
 		var currentKv = $('.kv.slide .slick-current figure').css('background-image');
 		// console.log(currentKv);
 		$('figure', kvkeep).css('background-image', currentKv);
 		kvkeep.removeClass('hide');
 		$('.kv.slide').slick('unslick');
-		setTimeout(function(){
+		$.get($(this).attr('data-content') + '.html?_=' + (new Date() * 1) , function(cont){
+			$('#content .inner').html(cont);
 			changeViewport('inner-page');
-		}, 10);
+		});
 
 		$('header nav.menu li').removeClass('active');
 		$(this).addClass('active');
@@ -101,10 +108,20 @@ $(function(){
 			kvkeep.addClass('hide');
 		}, 750);
 	});
+	$('.expand-page').on('click', function(){
+		//點擊主選單空白區塊的動作
+		if($(this).hasClass('on')){
+			changeViewport('inner-page');
+			$(this).removeClass('on');
+		}else{
+			changeViewport('page-expand');
+			$(this).addClass('on');
+		}
+	});
 	$('header nav.menu >aside >a').each(function(i, ele){
 		var item = new Hammer(ele, {});
 		item.on('tap', function () {
-			$(ele).parent().toggleClass('on');
+			$(ele).parent().toggleClass('on').siblings().removeClass('on');
 		});
 	});
 	var burger = new Hammer($('.burger-container')[0], {});

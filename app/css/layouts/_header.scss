@@ -70,7 +70,7 @@ header {
 					transition-delay: 0s;
 					svg{
 						transform: rotateZ(0deg); 
-						.st0{
+						polyline{
 							stroke: #e60012;
 						}
 					}
@@ -147,7 +147,26 @@ header {
 
 	}
 
+	.expand-page{
+		width: 22px;
+		height: 164px;
+		position: absolute;
+		display: block;
+		right: -82px;
+		top: 50%;
+		margin-top: -82px;
+		transform-origin: left center;
+		opacity: 0;
+		transition-duration: 0.25s;
+		svg{
+			width: 100%;
+			height: 100%;
+		}
+	}
 
+	.burger-container{
+		display: none;
+	}
 	@media screen and (max-width: 768px) {
 		background: #1b1b1b;
 		height: 88px;
@@ -212,6 +231,7 @@ header {
 			width: 20%;
 			float: right;
 			height: 100%;
+			display: block;
 			&:before{
 				position: absolute;
 				right: 0;
@@ -286,5 +306,20 @@ header {
 
 }
 
-body.overlay{
+.inner-page .expand-page{
+	opacity: 1;
+	transform: rotateY(-180deg);
+}
+
+.page-expand .expand-page{
+	opacity: 1;
+	transform: rotateY(0deg);
+}
+.page-expand header{
+	.menu,.social,.about{
+		display: none;
+	}
+	width: 0;
+	left: -60px;
+		transition-duration: 0.25s;
 }
