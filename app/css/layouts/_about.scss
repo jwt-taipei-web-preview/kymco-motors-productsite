@@ -35,6 +35,9 @@ nav.about{
 		padding-bottom: xsp(40);
 		top:0;
 		left:0;
+		margin-top: -2%;
+		padding-top: 2%;
+
 		a{
 			padding-left: xsp(60);
 			@include xsSubItem();
