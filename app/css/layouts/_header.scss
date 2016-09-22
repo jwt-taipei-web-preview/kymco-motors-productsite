@@ -168,12 +168,16 @@ header {
 		display: none;
 	}
 	@media screen and (max-width: 768px) {
-		background: #1b1b1b;
+		background: rgba(27,27,27, 0.75);
 		height: 88px;
 		height: vwxs(88);
 		overflow-y: hidden;
 		width: 100%;
+		transition-duration: 0.35s;
 
+		&:hover{
+			background: rgba(27,27,27, 0.95);
+		}
 		&.on{
 			height: auto;
 			.bars{
@@ -302,6 +306,9 @@ header {
 					margin-top: xsp(10);
 				}
 			}
+		}
+		.expand-page{
+			display: none;
 		}
 	}
 
