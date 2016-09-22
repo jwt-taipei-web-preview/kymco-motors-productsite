@@ -77,7 +77,7 @@ header {
 				}
 				li{
 					margin-top: 0!important;
-					a:hover{
+					a:hover,&.active a{
 						color: #e60012;
 					}
 					@for $i from 1 to 5 {
@@ -260,6 +260,7 @@ header {
 			background: #1b1b1b;
 			height: auto;
 			margin-top: xsp(85);
+			padding-top: xsp(50);
 			>aside{
 				@include xsItem(640, 60, 10, 10, 0, 24);
 				position:relative;
@@ -277,10 +278,25 @@ header {
 					z-index: 1;
 					background: #1b1b1b;
 				}
-				&:hover,&.on{
+				&.on{
 					>a{
-						padding-left: xsp(60);
+						color: #fff;
 						background: #1b1b1b;
+						padding-left: xsp(60);
+					}
+					ul{
+						margin-top: xsp(0);
+						position:relative;
+						height: 0;
+						li.active a{
+							color: #fff;
+						}
+					}
+				}
+				&:hover{
+					>a{
+						background: #1b1b1b;
+						padding-left: xsp(60);
 					}
 
 					ul{
