@@ -77,6 +77,9 @@
 				}
 				@media screen and (max-width: 768px) {
 					height: 55%;
+					figcaption{
+						margin-bottom: xsp(-30);
+					}
 				}
 			}
 		}
@@ -85,6 +88,8 @@
 		width: 100%;
 		padding-top: xsp(88);
 		padding-bottom: xsp(75);
+
+
 	}
 }
 

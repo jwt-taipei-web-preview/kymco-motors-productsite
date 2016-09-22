@@ -278,22 +278,7 @@ header {
 					z-index: 1;
 					background: #1b1b1b;
 				}
-				&.on{
-					>a{
-						color: #fff;
-						background: #1b1b1b;
-						padding-left: xsp(60);
-					}
-					ul{
-						margin-top: xsp(0);
-						position:relative;
-						height: 0;
-						li.active a{
-							color: #fff;
-						}
-					}
-				}
-				&:hover{
+				&.on, &:hover{
 					>a{
 						background: #1b1b1b;
 						padding-left: xsp(60);

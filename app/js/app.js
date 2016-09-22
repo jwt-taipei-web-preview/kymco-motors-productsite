@@ -92,6 +92,7 @@ $(function(){
 		$('header').removeClass('on');
 
 	});
+
 	$('.expand').on('click', function(){
 		//點擊主選單空白區塊的動作
 		$('header nav.menu li').removeClass('active');
@@ -108,6 +109,7 @@ $(function(){
 			kvkeep.addClass('hide');
 		}, 750);
 	});
+
 	$('.expand-page').on('click', function(){
 		//點擊主選單空白區塊的動作
 		if($(this).hasClass('on')){
@@ -118,12 +120,14 @@ $(function(){
 			$(this).addClass('on');
 		}
 	});
+
 	$('header nav.menu >aside >a').each(function(i, ele){
 		var item = new Hammer(ele, {});
 		item.on('tap', function () {
 			$(ele).parent().toggleClass('on').siblings().removeClass('on');
 		});
 	});
+
 	var burger = new Hammer($('.burger-container')[0], {});
 	burger.on('tap', function(){
 		$('header').toggleClass('on');
