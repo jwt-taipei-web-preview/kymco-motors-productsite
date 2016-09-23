@@ -71,18 +71,54 @@ $(function(){
 	function changeViewport(stat){
 		$('.' + containerClasses).attr('class', containerClasses + ' ' + stat);
 	}
+	function updateContent(content){
+
+		$(content).each(function(i, element){
+			if($(element).attr('role') === 'main'){
+				$('#content .inner').html(element);
+			}
+		});
+		
+	}
+	function pushState(content, cat, cata){
+        history.pushState({
+          content: content,
+          category: cat,
+          catalog: cata
+        }, document.title, content);
+	}
+	function getParam(name){
+		var r = new RegExp('^.*[?&]'+name+'[=]([^&]+).*$', 'i');
+		if(!r.test(location.search)){
+			return null;
+		}
+		var value = location.search.replace(r,'$1');
+		return value;
+	}
 
 	var kvkeep = $('.kv.keep');
 
 	$('header nav.menu li[data-content]').on('click', function(){
 		//點擊主選單後動作
 		var currentKv = $('.kv.slide .slick-current figure').css('background-image');
-		// console.log(currentKv);
+
 		$('figure', kvkeep).css('background-image', currentKv);
 		kvkeep.removeClass('hide');
 		$('.kv.slide').slick('unslick');
-		$.get($(this).attr('data-content') + '.html?_=' + (new Date() * 1) , function(cont){
-			$('#content .inner').html(cont);
+		var content = $(this).attr('data-content'), cat = $(this).attr('data-cat'), cata = $(this).attr('data-cata');
+		$.get(content + '?_=' + (new Date() * 1), function(cont){
+			updateContent(cont);
+			pushState(content, cat, cata);
+			$('#content .inner a').on('click', function(){
+				content = $(this).attr('data-content');
+				cat = $(this).attr('data-cat');
+				cata = $(this).attr('data-cata');
+				$.get($(this).attr('data-content'), function(product){
+					updateContent(product);
+					console.log(content, cat, cata);
+					pushState(content, cat, cata);
+				});
+			});
 			changeViewport('inner-page');
 		});
 
@@ -107,6 +143,7 @@ $(function(){
 				autoplaySpeed: 10000
 			});
 			kvkeep.addClass('hide');
+			pushState('/', null, null);
 		}, 750);
 	});
 
@@ -171,6 +208,18 @@ $(function(){
 			'url(' + $('.blend').attr('data-src') + '), url(' + $(litMotor).attr('data-src') + ')');
 	}
 	//
+
+	if(getParam('content') && getParam('cat') && getParam('cata')) {
+		$('header nav li[data-cata='+getParam('cata')+']').trigger('click');
+		var content = getParam('content'), cat = getParam('cat'), cata = getParam('cata');
+		$.get(content, function(product){
+			updateContent(product);
+			pushState(decodeURIComponent(content), cat, cata);
+		});
+		changeViewport('inner-page');
+
+	}
+
 });
 
 
