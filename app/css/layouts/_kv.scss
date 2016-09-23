@@ -72,7 +72,7 @@
 		}
 	}
 }
-.inner-page{
+.inner-page, .inner-page-short{
 	.kv{
 		width: 360px;
 		&.keep{
@@ -87,6 +87,13 @@
 			&.keep{
 				transition: 0.05s ease-out;
 			}
+		}
+	}
+}
+.inner-page-short{
+	.kv{
+		&.keep{
+			transition: 0.25s ease-out;
 		}
 	}
 }

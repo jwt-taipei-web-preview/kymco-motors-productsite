@@ -5,6 +5,7 @@ header {
 	left:0;
 	top:0;
 	margin:0;
+	transition-duration: 0.25s;
 
 	h1{
 		padding-left:22px;
@@ -315,9 +316,12 @@ header {
 
 }
 
-.inner-page .expand-page{
+.inner-page-short .expand-page, .inner-page .expand-page{
 	opacity: 1;
 	transform: rotateY(-180deg);
+}
+.inner-page .expand-page{
+	transition-delay: 0.5;
 }
 
 .page-expand .expand-page{
@@ -330,5 +334,4 @@ header {
 	}
 	width: 0;
 	left: -60px;
-		transition-duration: 0.25s;
 }

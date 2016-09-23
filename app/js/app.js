@@ -113,7 +113,7 @@ $(function(){
 	$('.expand-page').on('click', function(){
 		//點擊主選單空白區塊的動作
 		if($(this).hasClass('on')){
-			changeViewport('inner-page');
+			changeViewport('inner-page-short');
 			$(this).removeClass('on');
 		}else{
 			changeViewport('page-expand');
