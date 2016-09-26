@@ -54,7 +54,7 @@ nav.about{
 }
 
 
-.inner-page{
+.inner-page,.inner-page-short{
 	nav.about{
 		display: none;
 		@media screen and (max-width: 768px) {
