@@ -104,6 +104,9 @@ $(function(){
 			if(/catalog/ig.test(content)){
 				bindCatalogLink();
 			}
+			TweenMax.to('#content .inner', 0.5, {
+				scrollTop: 0
+			});
 		});
 		changeViewport('inner-page');
 		
@@ -257,9 +260,6 @@ $(function(){
 	});
 
 	function bindCatalogLink(){
-		TweenMax.to('#content .inner', 0.5, {
-			scrollTop: 0
-		});
 		$('#content .inner a').on('click', function(){
 			content = rootPath + $(this).attr('data-content') + '/';
 			// console.log(content);
