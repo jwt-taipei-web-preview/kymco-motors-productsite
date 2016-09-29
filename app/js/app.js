@@ -14,6 +14,7 @@ app.modules = {};
 // 網址為 gulp 或者 github 時 設定成debug 模式
 var debug = /localhost[:]9000|github.io/.test(location.href);
 var github = /github.io/.test(location.href);
+var rootPath = github ? '/kymco-motors-productsite/' : '/';
 if(/localhost[:]9000/.test(location.href)){
 	$('.logo a').attr('href','/');
 }else if(github){
@@ -109,7 +110,8 @@ $(function(){
 
 	$('header nav.menu li[data-content]').on('click', function(){
 
-		var content = $(this).attr('data-content'), cat = $(this).attr('data-cat'), cata = $(this).attr('data-cata');
+		var content = rootPath + $(this).attr('data-content'), cat = $(this).attr('data-cat'), cata = $(this).attr('data-cata');
+		console.log(content);
 		$.get(content + '?_=' + (new Date() * 1), function(cont){
 			updateContent(cont);
 			pushState(content, cat, cata);
@@ -119,7 +121,7 @@ $(function(){
 				cata = $(this).attr('data-cata');
 				$.get($(this).attr('data-content'), function(product){
 					updateContent(product);
-					console.log(content, cat, cata);
+					// console.log(content, cat, cata);
 					pushState(content, cat, cata);
 				});
 			});
@@ -225,17 +227,45 @@ $(function(){
 
 	if(getParam('content') && getParam('cat') && getParam('cata')) {
 		// $('header nav li[data-cata='+getParam('cata')+']').trigger('click');
-		var content = getParam('content'), cat = getParam('cat'), cata = getParam('cata');
+		var content = rootPath + getParam('content'), cat = getParam('cat'), cata = getParam('cata');
 		// console.log(content);
 		$.get(content, function(product){
 			updateContent(product);
 			pushState(content, cat, cata);
 			kvFreeze();
+			if(cat){
+				bindCatalogLink();
+			}
 		});
 		changeViewport('inner-page');
 
 	}
+	$(window).on('popstate', function(r,g,b){
+		var info = r.originalEvent.state;
+  		console.log(info);
+		$.get(info.content, function(product){
+			updateContent(product);
+			kvFreeze();
+			if(info.category){
+				bindCatalogLink();
+			}
+		});
+	});
 
+	function bindCatalogLink(){
+
+		$('#content .inner a').on('click', function(){
+			content = rootPath + $(this).attr('data-content');
+			console.log(content);
+			cat = $(this).attr('data-cat');
+			cata = $(this).attr('data-cata');
+			$.get(content, function(product){
+				updateContent(product);
+				// console.log(content, cat, cata);
+				pushState(content, cat, cata);
+			});
+		});
+	}
 });
 
 
