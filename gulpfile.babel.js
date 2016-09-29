@@ -51,15 +51,30 @@ const testLintOptions = {
 gulp.task('lint', lint('app/js/**/*.js'));
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
-gulp.task('html', ['css', 'js'], () => {
-  gulp.src('app/CNAME').pipe(gulp.dest('dist'));
-  gulp.src('app/catalog/*').pipe(gulp.dest('dist/catalog'));
+gulp.task('html', ['css', 'js', 'catalog', 'product'], () => {
+
   return gulp.src('app/*.html')
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
     // .pipe($.if('*.js', $.uglify()))
     // .pipe($.if('*.css', $.cssnano()))
     // .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
     .pipe(gulp.dest('dist'));
+});
+gulp.task('catalog', () => {
+  
+  return gulp.src('app/catalog/**/*.html')
+    .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
+    .pipe($.if('*.js', $.uglify()))
+    .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
+    .pipe(gulp.dest('dist/catalog/')) && del.bind(null, ['dist/catalog/js']);
+});
+gulp.task('product', () => {
+  
+  return gulp.src('app/product/**/*.html')
+    .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
+    .pipe($.if('*.js', $.uglify()))
+    .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
+    .pipe(gulp.dest('dist/product/')) && del.bind(null, ['dist/product/js']);
 });
 
 gulp.task('img', () => {
