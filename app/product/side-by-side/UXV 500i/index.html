@@ -14,7 +14,8 @@
 		var content = encodeURIComponent('/product/side-by-side/UXV-500i');
 		var cat = encodeURIComponent('offroad');
 		var cata = encodeURIComponent('side-by-side');
-		location.href='/?content=' + content +'&cat=' + cat +'&cata=' + cata;
+		var github = /github.io/.test(location.href);
+		location.href=(github?'/kymco-motors-productsite/':'/') + '?content=' + content +'&cat=' + cat +'&cata=' + cata;
 
 	</script>
 	<body>

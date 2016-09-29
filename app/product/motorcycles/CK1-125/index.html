@@ -14,7 +14,8 @@
 		var content = encodeURIComponent('/product/motorcycles/CK1-125');
 		var cat = encodeURIComponent('onroad');
 		var cata = encodeURIComponent('motorcycles');
-		location.href='/?content=' + content +'&cat=' + cat +'&cata=' + cata;
+		var github = /github.io/.test(location.href);
+		location.href=(github?'/kymco-motors-productsite/':'/') + '?content=' + content +'&cat=' + cat +'&cata=' + cata;
 
 	</script>
 	<body>

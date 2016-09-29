@@ -14,7 +14,8 @@
     var content = encodeURIComponent('catalog/maxi-scooters');
     var cat = encodeURIComponent('on-road');
     var cata = encodeURIComponent('maxi-scooters');
-    location.href='/?content=' + content +'&cat=' + cat +'&cata=' + cata;
+    var github = /github.io/.test(location.href);
+    location.href=(github?'/kymco-motors-productsite/':'/') + '?content=' + content +'&cat=' + cat +'&cata=' + cata;
     
   </script>
   <body>

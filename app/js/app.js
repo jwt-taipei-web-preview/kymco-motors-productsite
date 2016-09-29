@@ -13,9 +13,10 @@ app.modules = {};
 
 // 網址為 gulp 或者 github 時 設定成debug 模式
 var debug = /localhost[:]9000|github.io/.test(location.href);
+var github = /github.io/.test(location.href);
 if(/localhost[:]9000/.test(location.href)){
 	$('.logo a').attr('href','/');
-}else if(/github.io/.test(location.href)){
+}else if(github){
 	$('.logo a').attr('href','/kymco-motors-productsite/');
 	$('.kv figure').each(function(i,d){
 		$(this).attr('data-src', $(this).attr('data-src').replace(/img\//ig,'/kymco-motors-productsite/img/'));
@@ -63,7 +64,7 @@ $(function(){
 
 
 	//選單箭頭
-	$.get('img/nav/caret.svg', function(r){
+	$.get((github?'/kymco-motors-productsite/img/nav/caret.svg':'/img/nav/caret.svg'), function(r){
 		$('svg', r).appendTo($('header nav.menu aside >a'));
 	});
 	$('[data-icon]').each(function(i,d){
@@ -101,18 +102,13 @@ $(function(){
 			return null;
 		}
 		var value = location.search.replace(r,'$1');
-		return value;
+		return decodeURIComponent(value);
 	}
 
 	var kvkeep = $('.kv.keep');
 
 	$('header nav.menu li[data-content]').on('click', function(){
-		//點擊主選單後動作
-		var currentKv = $('.kv.slide .slick-current figure').css('background-image');
 
-		$('figure', kvkeep).css('background-image', currentKv);
-		kvkeep.removeClass('hide');
-		$('.kv.slide').slick('unslick');
 		var content = $(this).attr('data-content'), cat = $(this).attr('data-cat'), cata = $(this).attr('data-cata');
 		$.get(content + '?_=' + (new Date() * 1), function(cont){
 			updateContent(cont);
@@ -130,10 +126,7 @@ $(function(){
 			changeViewport('inner-page');
 		});
 
-		$('header nav.menu li').removeClass('active');
-		$(this).addClass('active');
-		$(this).parents('aside').addClass('on').siblings().removeClass('on');
-		$('header').removeClass('on');
+		kvFreeze();
 
 	});
 
@@ -215,14 +208,29 @@ $(function(){
 		$('.blend').css('background-image',
 			'url(' + $('.blend').attr('data-src') + '), url(' + $(litMotor).attr('data-src') + ')');
 	}
+
+	//點擊主選單後動作
+	function kvFreeze(){
+		var currentKv = $('.kv.slide .slick-current figure').css('background-image');
+
+		$('figure', kvkeep).css('background-image', currentKv);
+		kvkeep.removeClass('hide');
+		$('.kv.slide').slick('unslick');
+		$('header nav.menu li').removeClass('active');
+		$(this).addClass('active');
+		$(this).parents('aside').addClass('on').siblings().removeClass('on');
+		$('header').removeClass('on');
+	}
 	//
 
 	if(getParam('content') && getParam('cat') && getParam('cata')) {
-		$('header nav li[data-cata='+getParam('cata')+']').trigger('click');
+		// $('header nav li[data-cata='+getParam('cata')+']').trigger('click');
 		var content = getParam('content'), cat = getParam('cat'), cata = getParam('cata');
+		// console.log(content);
 		$.get(content, function(product){
 			updateContent(product);
-			pushState(decodeURIComponent(content), cat, cata);
+			pushState(content, cat, cata);
+			kvFreeze();
 		});
 		changeViewport('inner-page');
 

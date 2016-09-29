@@ -14,7 +14,8 @@
     var content = encodeURIComponent('catalog/atv');
     var cat = encodeURIComponent('off-road');
     var cata = encodeURIComponent('atv');
-    location.href='/?content=' + content +'&cat=' + cat +'&cata=' + cata;
+    var github = /github.io/.test(location.href);
+    location.href=(github?'/kymco-motors-productsite/':'/') + '?content=' + content +'&cat=' + cat +'&cata=' + cata;
     
   </script>
   <body>

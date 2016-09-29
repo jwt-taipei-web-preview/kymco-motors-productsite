@@ -14,7 +14,8 @@
 		var content = encodeURIComponent('/product/atv/MXU-550i-EX');
 		var cat = encodeURIComponent('offroad');
 		var cata = encodeURIComponent('atv');
-		location.href='/?content=' + content +'&cat=' + cat +'&cata=' + cata;
+		var github = /github.io/.test(location.href);
+		location.href=(github?'/kymco-motors-productsite/':'/') + '?content=' + content +'&cat=' + cat +'&cata=' + cata;
 
 	</script>
 	<body>
