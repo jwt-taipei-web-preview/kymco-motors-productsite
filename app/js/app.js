@@ -21,7 +21,9 @@ if(/localhost[:]9000/.test(location.href)){
 	$('.logo a').attr('href','/kymco-motors-productsite/');
 	$(function(){
 		$('.kv figure').each(function(i,d){
-			$(this).attr('data-src', $(this).attr('data-src').replace(/img\//ig,'/kymco-motors-productsite/img/'));
+			if($(this).attr('data-src')){
+				$(this).attr('data-src', $(this).attr('data-src').replace(/img\//ig,'/kymco-motors-productsite/img/'));
+			}
 		});
 	});
 }
