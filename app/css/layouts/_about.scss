@@ -70,3 +70,14 @@ nav.about{
 		}
 	}
 }
+.show-nav-about{
+	nav.about{
+		display: block;
+		@media screen and (max-width: 768px) {
+			display: inherit;
+		}
+		a{
+			color: #535353;
+		}
+	}
+}

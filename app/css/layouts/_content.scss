@@ -187,6 +187,74 @@
 				}
 			}
 		}
+
+
+		.worldwide{
+			position:relative;
+			width: 100%;
+			padding: percentage(5/1006) percentage(37/1006) percentage(25/1006) ;
+			// .map-container{
+			// 	position:relative;
+			// }
+			.map-container{
+				width: percentage(930/1006);
+				background-size: cover;
+				background-repeat: no-repeat;
+				padding-top: percentage(600/1006);
+				position:relative;
+				.map{
+					top:0;
+					left:0;
+					position: absolute;
+					width: 100%;
+					background-image: url(../img/worldwide/map.svg);
+					background-size: cover;
+					background-repeat: no-repeat;
+					padding-top: percentage(525/930);
+					.place{
+						position: absolute;
+						width: percentage(43/930);
+						padding-top: percentage(43/930);
+						display: block;
+						top:0;
+						left:0;
+						transition-duration: 0.25s;
+						transition-property: transform;
+						transform-origin: center center 1px;
+						border-radius: 50%;
+
+						img{
+							position: absolute;
+							display: block;
+							top:0;
+							left:0;
+							width: 100%;
+							height: 100%;
+
+						}
+
+						&:hover{
+							transform: scale(1.9);
+							z-index: 2;
+						}
+					}
+				}
+				&:before{
+					content: '';
+					top:0;
+					left:0;
+					position: absolute;
+					width: 100%;
+					padding-top: percentage(525/930);
+					height: 0;
+					opacity: 0.25;
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-color: rgba(0,0,0,0);
+
+				}
+			}
+		}
 	}
 	@media screen and (max-width: 768px) {
 		width: 100%;

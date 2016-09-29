@@ -11,6 +11,7 @@ header {
 		padding-left:22px;
 		margin-top: 35px;
 		position: relative;
+		width: 278px;
 	}
 
 	nav.menu{
@@ -331,6 +332,12 @@ header {
 .page-expand header{
 	.menu,.social,.about{
 		display: none;
+	}
+	.kymco{
+		fill: #000;
+	}
+	h1{
+		margin-left: 60px;
 	}
 	width: 0;
 	left: -60px;

@@ -76,7 +76,7 @@
 	.kv{
 		width: 360px;
 		&.keep{
-			transition: 0.45s ease-out;
+			transition: 0.45s ease-out 0.3s;
 		}
 	}
 	@media screen and (max-width: 768px) {

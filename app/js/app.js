@@ -16,6 +16,9 @@ var debug = /localhost[:]9000|github.io/.test(location.href);
 var github = /github.io/.test(location.href);
 var rootPath = github ? '/kymco-motors-productsite/' : '/';
 $('.logo a').attr('href',rootPath);
+$.get($('.logo a img'). attr('src'), function(svg){
+	$('.logo a').html($('svg', svg));
+});
 $(function(){
 	$('.kv figure').each(function(i,d){
 		if($(this).attr('data-src')){
@@ -81,7 +84,10 @@ $(function(){
 		$('.' + containerClasses).attr('class', containerClasses + ' ' + stat);
 	}
 	function updateContent(content, cat, cata, callback){
-
+		if(content === '/'){
+			$('.expand').trigger('click');
+			return false;
+		}
 		pushState(content, cat, cata);
 		$('#content').addClass('fade').removeClass('in');
 
@@ -108,7 +114,14 @@ $(function(){
 				scrollTop: 0
 			});
 		});
-		changeViewport('inner-page');
+		switch(cat){
+			case 'worldwide':
+				changeViewport('inner-page show-nav-about');
+				break;
+			default:
+				changeViewport('inner-page');
+				break;
+		}
 		
 	}
 	function pushState(content, cat, cata){
@@ -146,6 +159,20 @@ $(function(){
 
 	});
 
+	$('header nav.about a[data-content]').on('click', function(){
+
+		var content = rootPath + $(this).attr('data-content') + '/', cat = $(this).attr('data-cat');
+		// console.log(content);
+		updateContent(content, cat, null, function(){
+			switch(cat){
+				case 'worldwide':
+					prepareMap();
+					break;
+			}
+		});
+
+	});
+
 	$('.expand').on('click', function(){
 		//點擊主選單空白區塊的動作
 		$('header nav.menu li').removeClass('active');
@@ -165,12 +192,16 @@ $(function(){
 	});
 
 	$('.expand-page').on('click', function(){
+		var append = '';
+		if($('.show-nav-about').length){
+			append = ' show-nav-about';
+		}
 		//點擊主選單空白區塊的動作
 		if($(this).hasClass('on')){
-			changeViewport('inner-page-short');
+			changeViewport('inner-page-short' + append);
 			$(this).removeClass('on');
 		}else{
-			changeViewport('page-expand');
+			changeViewport('page-expand' + append);
 			$(this).addClass('on');
 		}
 	});
@@ -250,10 +281,25 @@ $(function(){
 		updateContent(content, cat, cata);		
 
 	}
+
+	//Worldwide direct link handle
+	if(getParam('content') === 'worldwide' && getParam('cat') === 'worldwide') {
+		var content = rootPath + getParam('content') + '/', cat = getParam('cat');
+		// console.log(content);
+		var src = 'url(' + $('.kv.slide li:eq(0) figure').attr('data-src') + ')';
+		setTimeout(function(){
+			$('.kv.keep figure').css('background-image', src );	
+		}, 500);
+		updateContent(content, cat, null, function(){
+			prepareMap();
+		});		
+	}
+
+
 	$(window).on('popstate', function(r,g,b){
 		var info = r.originalEvent.state;
   		if(info === null){
-  			return;
+  			location.href = rootPath;
   		}
 
 		updateContent(info.content, info.cat, info.cata);
@@ -266,6 +312,14 @@ $(function(){
 			cat = $(this).attr('data-cat');
 			cata = $(this).attr('data-cata');
 			updateContent(content, cat, cata);
+		});
+	}
+	function prepareMap(){
+
+		$('.place').each(function(){
+			var x = $(this).attr('data-x') * 1,
+				y = $(this).attr('data-y') * 1;
+			$(this).css('margin', (y / 9.3) + '% 0 0 ' + (x / 9.3) + '%');
 		});
 	}
 });
