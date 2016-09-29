@@ -63,14 +63,12 @@ gulp.task('html', ['css', 'js', 'catalog', 'product'], () => {
 gulp.task('catalog', () => {
   
   return gulp.src('app/catalog/**/*.html')
-    .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
     .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
     .pipe(gulp.dest('dist/catalog/'));
 });
 gulp.task('product', () => {
   
   return gulp.src('app/product/**/*.html')
-    .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
     .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
     .pipe(gulp.dest('dist/product/'));
 });
