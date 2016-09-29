@@ -64,17 +64,15 @@ gulp.task('catalog', () => {
   
   return gulp.src('app/catalog/**/*.html')
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
-    .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
-    .pipe(gulp.dest('dist/catalog/')) && del.bind(null, ['dist/catalog/js']);
+    .pipe(gulp.dest('dist/catalog/'));
 });
 gulp.task('product', () => {
   
   return gulp.src('app/product/**/*.html')
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
-    .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
-    .pipe(gulp.dest('dist/product/')) && del.bind(null, ['dist/product/js']);
+    .pipe(gulp.dest('dist/product/'));
 });
 
 gulp.task('img', () => {
