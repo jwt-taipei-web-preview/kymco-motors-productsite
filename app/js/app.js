@@ -134,9 +134,9 @@ $(function(){
 		updateContent(content, cat, cata, function(){
 
 			$('#content .inner a').on('click', function(){
-				content = $(this).attr('content');
-				cat = $(this).attr('cat');
-				cata = $(this).attr('cata');
+				content = $(this).attr('data-content');
+				cat = $(this).attr('data-cat');
+				cata = $(this).attr('data-cata');
 				updateContent(content, cat, cata);
 			});
 		});
