@@ -12,8 +12,17 @@ app.modules = {};
 // var dayOfMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 // 網址為 gulp 或者 github 時 設定成debug 模式
-var debug = /localhost[:]9000|nelson119.github.io/.test(location.href);
+var debug = /localhost[:]9000|github.io/.test(location.href);
+if(/localhost[:]9000/.test(location.href)){
+	$('.logo a').attr('href','/');
+}else if(/github.io/.test(location.href)){
+	$('.logo a').attr('href','/kymco-motors-productsite/');
+	$('.kv figure').each(function(i,d){
+		$(this).attr('data-src', $(this).attr('data-src').replace(/img\//ig,'/kymco-motors-productsite/img/'));
+	});
+}
 
+//分享按鈕
 var share = {
 	facebook: function(href, title){
 		href = encodeURIComponent(href || location.href + '?utm_source=facebook&utm_medium=fbshare_m&utm_campaign=roseanni');
@@ -51,7 +60,6 @@ $(function(){
 	$(window).trigger('resize');
 
 
-	//分享按鈕
 
 
 	//選單箭頭
