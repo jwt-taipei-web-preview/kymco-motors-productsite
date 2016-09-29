@@ -134,9 +134,9 @@ $(function(){
 		updateContent(content, cat, cata, function(){
 
 			$('#content .inner a').on('click', function(){
-				content = $(this).attr('data-content');
-				cat = $(this).attr('data-cat');
-				cata = $(this).attr('data-cata');
+				var cont2 = $(this).attr('data-content'),
+					cat2 = $(this).attr('data-cat'),
+					cata2 = $(this).attr('data-cata');
 				updateContent(content, cat, cata);
 			});
 		});
@@ -257,7 +257,9 @@ $(function(){
 	});
 
 	function bindCatalogLink(){
-
+		TweenMax.to('#content .inner', 0.5, {
+			scrollTop: 0
+		});
 		$('#content .inner a').on('click', function(){
 			content = rootPath + $(this).attr('data-content') + '/';
 			// console.log(content);
