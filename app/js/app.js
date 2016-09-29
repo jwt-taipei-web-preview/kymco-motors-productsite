@@ -249,7 +249,9 @@ $(function(){
 	}
 	$(window).on('popstate', function(r,g,b){
 		var info = r.originalEvent.state;
-  		console.log(info);
+  		if(info === null){
+  			return;
+  		}
 
 		updateContent(info.content, info.cat, info.cata);
 	});
