@@ -15,19 +15,14 @@ app.modules = {};
 var debug = /localhost[:]9000|github.io/.test(location.href);
 var github = /github.io/.test(location.href);
 var rootPath = github ? '/kymco-motors-productsite/' : '/';
-if(/localhost[:]9000/.test(location.href)){
-	$('.logo a').attr('href','/');
-}else if(github){
-	$('.logo a').attr('href','/kymco-motors-productsite/');
-	$(function(){
-		$('.kv figure').each(function(i,d){
-			if($(this).attr('data-src')){
-				$(this).attr('data-src', $(this).attr('data-src').replace(/img\//ig,'/kymco-motors-productsite/img/'));
-			}
-		});
+$('.logo a').attr('href',rootPath);
+$(function(){
+	$('.kv figure').each(function(i,d){
+		if($(this).attr('data-src')){
+			$(this).attr('data-src', rootPath + $(this).attr('data-src'));
+		}
 	});
-}
-
+});
 //分享按鈕
 var share = {
 	facebook: function(href, title){
@@ -85,16 +80,36 @@ $(function(){
 	function changeViewport(stat){
 		$('.' + containerClasses).attr('class', containerClasses + ' ' + stat);
 	}
-	function updateContent(content){
+	function updateContent(content, cat, cata, callback){
 
-		$(content).each(function(i, element){
-			if($(element).attr('role') === 'main'){
-				$('#content .inner').html(element);
+		pushState(content, cat, cata);
+		$('#content').addClass('fade').removeClass('in');
+
+		$.get(content, function(product){
+
+			$(product).each(function(i, element){
+				if($(element).attr('role') === 'main'){
+					$('#content .inner').html(element);
+				}
+			});
+
+			$('#content').addClass('in').removeClass('fade');
+
+			kvFreeze();
+
+			if(typeof callback == 'function'){
+				callback();
+			}
+
+			if(/catalog/ig.test(content)){
+				bindCatalogLink();
 			}
 		});
+		changeViewport('inner-page');
 		
 	}
 	function pushState(content, cat, cata){
+		console.log(content);
         history.pushState({
           content: content,
           category: cat,
@@ -114,25 +129,17 @@ $(function(){
 
 	$('header nav.menu li[data-content]').on('click', function(){
 
-		var content = rootPath + $(this).attr('data-content'), cat = $(this).attr('data-cat'), cata = $(this).attr('data-cata');
-		console.log(content);
-		$.get(content + '?_=' + (new Date() * 1), function(cont){
-			updateContent(cont);
-			pushState(content, cat, cata);
-			$('#content .inner a').on('click', function(){
-				content = $(this).attr('data-content');
-				cat = $(this).attr('data-cat');
-				cata = $(this).attr('data-cata');
-				$.get($(this).attr('data-content'), function(product){
-					updateContent(product);
-					// console.log(content, cat, cata);
-					pushState(content, cat, cata);
-				});
-			});
-			changeViewport('inner-page');
-		});
+		var content = rootPath + $(this).attr('data-content') + '/', cat = $(this).attr('data-cat'), cata = $(this).attr('data-cata');
+		// console.log(content);
+		updateContent(content, cat, cata, function(){
 
-		kvFreeze();
+			$('#content .inner a').on('click', function(){
+				content = $(this).attr('content');
+				cat = $(this).attr('cat');
+				cata = $(this).attr('cata');
+				updateContent(content, cat, cata);
+			});
+		});
 
 	});
 
@@ -150,7 +157,7 @@ $(function(){
 				autoplaySpeed: 10000
 			});
 			kvkeep.addClass('hide');
-			pushState('/', null, null);
+			pushState(rootPath, null, null);
 		}, 750);
 	});
 
@@ -231,43 +238,30 @@ $(function(){
 
 	if(getParam('content') && getParam('cat') && getParam('cata')) {
 		// $('header nav li[data-cata='+getParam('cata')+']').trigger('click');
-		var content = rootPath + getParam('content'), cat = getParam('cat'), cata = getParam('cata');
+		var content = rootPath + getParam('content') + '/', cat = getParam('cat'), cata = getParam('cata');
 		// console.log(content);
-		$.get(content, function(product){
-			updateContent(product);
-			pushState(content, cat, cata);
-			kvFreeze();
-			if(cat){
-				bindCatalogLink();
-			}
-		});
-		changeViewport('inner-page');
+		var src = 'url(' + $('.kv.slide li:eq(0) figure').attr('data-src') + ')';
+		setTimeout(function(){
+			$('.kv.keep figure').css('background-image', src );	
+		}, 500);
+		updateContent(content, cat, cata);		
 
 	}
 	$(window).on('popstate', function(r,g,b){
 		var info = r.originalEvent.state;
   		console.log(info);
-		$.get(info.content, function(product){
-			updateContent(product);
-			kvFreeze();
-			if(info.category){
-				bindCatalogLink();
-			}
-		});
+
+		updateContent(info.content, info.cat, info.cata);
 	});
 
 	function bindCatalogLink(){
 
 		$('#content .inner a').on('click', function(){
-			content = rootPath + $(this).attr('data-content');
-			console.log(content);
+			content = rootPath + $(this).attr('data-content') + '/';
+			// console.log(content);
 			cat = $(this).attr('data-cat');
 			cata = $(this).attr('data-cata');
-			$.get(content, function(product){
-				updateContent(product);
-				// console.log(content, cat, cata);
-				pushState(content, cat, cata);
-			});
+			updateContent(content, cat, cata);
 		});
 	}
 });
