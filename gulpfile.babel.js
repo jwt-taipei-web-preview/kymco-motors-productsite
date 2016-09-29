@@ -51,7 +51,7 @@ const testLintOptions = {
 gulp.task('lint', lint('app/js/**/*.js'));
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
-gulp.task('html', ['css', 'js', 'catalog', 'product'], () => {
+gulp.task('html', ['css', 'js', 'worldwide', 'catalog', 'product'], () => {
 
   return gulp.src('app/*.html')
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
@@ -71,6 +71,13 @@ gulp.task('product', () => {
   return gulp.src('app/product/**/*.html')
     .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
     .pipe(gulp.dest('dist/product/'));
+});
+
+gulp.task('worldwide', () => {
+  
+  return gulp.src('app/worldwide/**/*.html')
+    .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
+    .pipe(gulp.dest('dist/worldwide/'));
 });
 
 gulp.task('img', () => {
