@@ -9,7 +9,7 @@ app.modules.kv = function(){
 
 	//輪播
 	var timelines = [];
-	$('.kv.slide').slick({
+	$('.kv .slide').slick({
 		dots: false,
 		fade: true,
 		arrows: false,
@@ -29,7 +29,7 @@ app.modules.kv = function(){
 		});
 		timelines.push(tl);
 	});
-	$('.kv.slide').on('init', function(container, slide){
+	$('.kv .slide').on('init', function(container, slide){
 		var w = $(window).width();
 		if(w > 768){
 			timelines[0].play();
@@ -53,7 +53,7 @@ app.modules.kv = function(){
 	//第一個輪播內容
 	if(timelines[0]){
 		var tl1 = timelines[0];
-		var ele1 = $('.kv.slide .slick-slide:eq(0) figure.blend');
+		var ele1 = $('.kv .slide .slick-slide:eq(0) figure.blend');
 		TweenMax.set(ele1,{
 			opacity: 0
 		});

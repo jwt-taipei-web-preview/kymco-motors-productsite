@@ -20,10 +20,8 @@ $.get($('.logo a img'). attr('src'), function(svg){
 	$('.logo a').html($('svg', svg));
 });
 $(function(){
-	$('.kv figure').each(function(i,d){
-		if($(this).attr('data-src')){
-			$(this).attr('data-src', rootPath + $(this).attr('data-src'));
-		}
+	$('.kv figure[data-src]').each(function(i,d){
+		$(this).attr('data-src', rootPath + $(this).attr('data-src'));
 	});
 });
 //分享按鈕
@@ -118,6 +116,9 @@ $(function(){
 			case 'worldwide':
 				changeViewport('inner-page show-nav-about');
 				break;
+			case 'about-us':
+				changeViewport('inner-page show-nav-about');
+				break;
 			default:
 				changeViewport('inner-page');
 				break;
@@ -141,7 +142,7 @@ $(function(){
 		return decodeURIComponent(value);
 	}
 
-	var kvkeep = $('.kv.keep');
+	var kvkeep = $('.kv .keep');
 
 	$('header nav.menu li[data-content]').on('click', function(){
 
@@ -168,6 +169,9 @@ $(function(){
 				case 'worldwide':
 					prepareMap();
 					break;
+				case 'about-us':
+					// prepareMap();
+					break;
 			}
 		});
 
@@ -179,12 +183,16 @@ $(function(){
 		$('header nav.menu aside').removeClass('on');
 		changeViewport('menu-expand');
 		setTimeout(function(){
-			$('.kv.slide').slick({
+			$('.kv .slide').slick({
 				dots: false,
 				fade: true,
 				arrows: false,
+				speed: 750,
 				autoplay: true,
-				autoplaySpeed: 10000
+				pauseOnFocus: false,
+				pauseOnHover: false,
+				autoplaySpeed: 6000,
+				initialSlide: kvkeep.attr('data-index')
 			});
 			kvkeep.addClass('hide');
 			pushState(rootPath, null, null);
@@ -258,11 +266,16 @@ $(function(){
 
 	//點擊主選單後動作
 	function kvFreeze(){
-		var currentKv = $('.kv.slide .slick-current figure').css('background-image');
-
-		$('figure', kvkeep).css('background-image', currentKv);
+		var currentKv = $('.kv .slide .slick-current figure');
+		var index = $('.kv .slide .slick-current').index();
+		var backgroundImage = currentKv.css('background-image') != 'none' ?
+			currentKv.css('background-image') :
+			'url(' + currentKv.attr('data-src') + ')';
+		// console.log(backgroundImage);
+		kvkeep.css('background-image', backgroundImage);
+		kvkeep.attr('data-index', index);
 		kvkeep.removeClass('hide');
-		$('.kv.slide').slick('unslick');
+		$('.kv .slide').slick('unslick');
 		$('header nav.menu li').removeClass('active');
 		$(this).addClass('active');
 		$(this).parents('aside').addClass('on').siblings().removeClass('on');
@@ -274,9 +287,9 @@ $(function(){
 		// $('header nav li[data-cata='+getParam('cata')+']').trigger('click');
 		var content = rootPath + getParam('content') + '/', cat = getParam('cat'), cata = getParam('cata');
 		// console.log(content);
-		var src = 'url(' + $('.kv.slide li:eq(0) figure').attr('data-src') + ')';
+		var src = 'url(' + $('.kv .slide li:eq(0) figure').attr('data-src') + ')';
 		setTimeout(function(){
-			$('.kv.keep figure').css('background-image', src );	
+			$('.kv .keep').css('background-image', src );	
 		}, 500);
 		updateContent(content, cat, cata);		
 
@@ -286,12 +299,24 @@ $(function(){
 	if(getParam('content') === 'worldwide' && getParam('cat') === 'worldwide') {
 		var content = rootPath + getParam('content') + '/', cat = getParam('cat');
 		// console.log(content);
-		var src = 'url(' + $('.kv.slide li:eq(0) figure').attr('data-src') + ')';
+		var src = 'url(' + $('.kv .slide li:eq(0) figure').attr('data-src') + ')';
 		setTimeout(function(){
-			$('.kv.keep figure').css('background-image', src );	
+			$('.kv .keep').css('background-image', src );	
 		}, 500);
 		updateContent(content, cat, null, function(){
 			prepareMap();
+		});		
+	}
+	//about-us direct link handle
+	if(getParam('content') === 'about-us' && getParam('cat') === 'about-us') {
+		var content = rootPath + getParam('content') + '/', cat = getParam('cat');
+		// console.log(content);
+		var src = 'url(' + $('.kv .slide li:eq(0) figure').attr('data-src') + ')';
+		setTimeout(function(){
+			$('.kv .keep').css('background-image', src );	
+		}, 500);
+		updateContent(content, cat, null, function(){
+			// prepareMap();
 		});		
 	}
 
@@ -316,10 +341,13 @@ $(function(){
 	}
 	function prepareMap(){
 
-		$('.place').each(function(){
+		$('.map .place').each(function(){
 			var x = $(this).attr('data-x') * 1,
 				y = $(this).attr('data-y') * 1;
 			$(this).css('margin', (y / 9.3) + '% 0 0 ' + (x / 9.3) + '%');
+		}).on('click', function(){
+			$(this).addClass('on').siblings().removeClass('on');
+			$('.map-container .place-info').eq($(this).index()).addClass('on').siblings().removeClass('on');
 		});
 	}
 });

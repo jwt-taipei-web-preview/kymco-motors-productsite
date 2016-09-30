@@ -1,17 +1,26 @@
 
 /* Custom page header */
 .kv {
-	margin: 0;
-	padding: 0;
 	position: fixed;
 	left: 0;
 	top: 0;
 	width: 100%;
 	height: 100%;
 	transition: 0.45s ease-out;
-	overflow: hidden;
 	background: #000;
+	.range{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+	.slide{
 
+		margin: 0;
+		padding: 0;
+	}
 
 	li{
 		width: 100%;
@@ -45,18 +54,15 @@
 		}
 	}
 
-	&.keep{
+	.keep{
+		position: absolute;
 		width: 100vw;
-		transition: 0.45s ease-out;
-		figure{
-			position: absolute;
-			width: 100vw;
-			height: 100%;
-			left:50%;
-			margin-left: -50vw;
-			background-position: center center; 
-			background-size: cover; 
-		}
+		height: 100%;
+		left:50%;
+		top:0;
+		margin-left: -50vw;
+		background-position: center center; 
+		background-size: cover; 
 		&:after{
 			position: absolute;
 			top: 0;
@@ -71,11 +77,27 @@
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#66000000', endColorstr='#007db9e8',GradientType=0 ); /* IE6-9 */
 		}
 	}
+	.expand-page{
+		width: 22px;
+		height: 164px;
+		position: absolute;
+		display: block;
+		right: -22px;
+		top: 50%;
+		margin-top: -82px;
+		transform-origin: left center;
+		opacity: 0;
+		transition-duration: 0.25s;
+		svg{
+			width: 100%;
+			height: 100%;
+		}
+	}
 }
 .inner-page, .inner-page-short{
 	.kv{
 		width: 360px;
-		&.keep{
+		.keep{
 			transition: 0.45s ease-out 0.3s;
 		}
 	}
@@ -84,7 +106,7 @@
 			width: 100%;
 			height: 0;
 			padding-top: xsp(88);
-			&.keep{
+			.keep{
 				transition: 0.05s ease-out;
 			}
 		}
@@ -92,8 +114,8 @@
 }
 .inner-page-short{
 	.kv{
-		&.keep{
-			transition: 0.25s ease-out;
+		.keep{
+			transition: 0.45s ease-out;
 		}
 	}
 }
@@ -107,9 +129,23 @@
 			width: 100%;
 			height: 0;
 			padding-top: xsp(88);
-			&.keep{
+			.keep{
 				transition: 0.05s ease-out;
 			}
 		}
 	}
+}
+
+
+.inner-page-short .expand-page, .inner-page .expand-page{
+	opacity: 1;
+	transform: rotateY(-180deg);
+}
+.inner-page .expand-page{
+	transition-delay: 0.5;
+}
+
+.page-expand .expand-page{
+	opacity: 1;
+	transform: rotateY(0deg);
 }

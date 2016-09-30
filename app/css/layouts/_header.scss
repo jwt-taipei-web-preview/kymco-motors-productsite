@@ -149,22 +149,6 @@ header {
 
 	}
 
-	.expand-page{
-		width: 22px;
-		height: 164px;
-		position: absolute;
-		display: block;
-		right: -82px;
-		top: 50%;
-		margin-top: -82px;
-		transform-origin: left center;
-		opacity: 0;
-		transition-duration: 0.25s;
-		svg{
-			width: 100%;
-			height: 100%;
-		}
-	}
 
 	.burger-container{
 		display: none;
@@ -317,18 +301,6 @@ header {
 
 }
 
-.inner-page-short .expand-page, .inner-page .expand-page{
-	opacity: 1;
-	transform: rotateY(-180deg);
-}
-.inner-page .expand-page{
-	transition-delay: 0.5;
-}
-
-.page-expand .expand-page{
-	opacity: 1;
-	transform: rotateY(0deg);
-}
 .page-expand header{
 	.menu,.social,.about{
 		display: none;

@@ -16,7 +16,7 @@
 		overflow:auto;
 		.catalog{
 			width: 100%;
-			padding: 0 10%;
+			padding: 0 10% 50px;
 			margin-left: auto;
 			margin-right: auto;
 			.row >aside{
@@ -193,7 +193,8 @@
 		.worldwide{
 			position:relative;
 			width: 100%;
-			padding: percentage(5/1006) percentage(37/1006) percentage(25/1006) ;
+			overflow: hidden;
+			padding: percentage(5/1006) percentage(37/1006) percentage(40/1006) ;
 			// .map-container{
 			// 	position:relative;
 			// }
@@ -234,7 +235,7 @@
 
 						}
 
-						&:hover{
+						&:hover,&.on{
 							transform: scale(1.9);
 							z-index: 2;
 						}
@@ -253,6 +254,147 @@
 					background-repeat: no-repeat;
 					background-color: rgba(0,0,0,0);
 
+				}
+			}
+			.map-info{
+				padding: percentage(83/ 930) 0 0;
+				height: 0;
+				bottom:0;
+				left:0;
+				width: percentage(145/930);
+				position: absolute;
+				img{
+					position: absolute;
+					top:0;
+					left:0;
+					width: 100%;
+					height: 100%;
+				}
+			}
+			.place-info-container{
+				position: absolute;
+				bottom:0;
+				right:0;
+				width: percentage(525/930);
+				padding-top: percentage(70/930);
+				.place-info{
+					position:absolute;
+					width: 100%;
+					height: 100%;
+					top: 250%;
+					left:0;
+					transition-duration: 1.2s;
+					line-height: 20em;
+
+					&.on{
+						top: 0;
+						line-height: 1.5em;
+					}
+				}
+			}
+		}
+
+		.aboutus{
+			position:relative;
+			width: 100%;
+			padding: percentage(80/1006) percentage(90/1006) percentage(25/1006) ;
+			.aboutus-container{
+				.about-kv{
+					padding: percentage(224/834) 0 0;
+					margin: 0;
+					width: 100%;
+					height: 0;
+					position:relative;
+					img{
+						position: absolute;
+						top:0;
+						left:0;
+						height: auto;
+						width: 100%;
+						display: block;
+					}
+				}
+				.tabs{
+					height: 71px;
+					border-bottom: 1px solid #717171;
+					a{
+						width: 263px;
+						height: 70px;
+						line-height: 70px;
+						vertical-align: middle;
+						color: #717171;
+						transition-duration: 0.25s;
+						transition-property: color border-color;
+						border-bottom: 1px solid rgba(0, 0, 0, 0);
+
+						&:hover{
+							color: rgba(195, 13, 35,0.85);
+							border-color: rgba(195, 13, 35, 0.85);
+
+						}
+						&:focus,&.on{
+							color: rgba(195, 13, 35, 1);
+							border-color: rgba(195, 13, 35, 1);
+						}
+
+						&+a{
+							margin-left: 170px;
+						}
+					}
+					margin-bottom: 70px;
+				}
+				.text-content{
+					line-height: 2.5em;
+
+					p{
+						margin-bottom: 2em;
+					}
+					&.fade{
+						height: 0;
+						transition: opacity 0.15s linear 0s, height 0s linear 0.15s;
+						&.in{
+							height: auto;
+						}
+					}
+					// article{
+					// }
+				}
+				.date,.year{
+					color: #c30d23;
+				}
+				.stone{
+					min-height: 125px;
+				}
+				.dot{
+					width: 10px;
+					height: 10px;
+					display: block;
+					position: absolute;
+					left: calc((100% - 10px) / 2);
+					top: calc((100% - 10px) / 2);
+					border-radius: 50%;
+					background: #c30d23;
+				}
+				.stone-range{
+					position: relative;
+					margin-bottom: 10px;
+				}
+				.hyphen{
+					height: calc(100% - 60px);
+					background-color: #575757;
+					position: absolute;
+					left: calc(16.7% - 2px);
+					top: 40px;
+					width: 3px;
+					&:after{
+						position: absolute;
+						content: '';
+						top:10%;
+						height: 80%;
+						display: block;
+						width: 2px;
+						background-color: #c30d23;
+					}
 				}
 			}
 		}
