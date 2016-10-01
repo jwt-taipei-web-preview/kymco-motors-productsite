@@ -179,7 +179,7 @@ header {
 		h1{
 			@include xsItem(262, 44, 26, 0, 24, 0);
 
-			img{
+			svg{
 				@include xsSubItem();
 			}
 		}
@@ -293,9 +293,6 @@ header {
 					margin-top: xsp(10);
 				}
 			}
-		}
-		.expand-page{
-			display: none;
 		}
 	}
 

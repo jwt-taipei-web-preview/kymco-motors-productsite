@@ -40,8 +40,8 @@ $brand-primary:         #27ae60;
 // }
 
 $main-font: 'Roboto';
-$base-font-size: 13px;
 $base-font-size-num: 13;
+$base-font-size: #{$base-font-size-num}px;
 $base-font-size-sm: 10px;
 
 .font-default{
@@ -134,7 +134,7 @@ $browser-lg-viewport: 1366; // Default
 			font-size: vwsm($i);
 		}
 		.fontsize-xs-#{$i} {
-			font-size: #{$i}px;
+			font-size: percentage($i/2/$base-font-size-num);
 			font-size: vwxs($i);
 		}
 	}

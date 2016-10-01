@@ -29,6 +29,12 @@ nav.about{
 			margin-left: 35px;
 		}
 	}
+	@media screen and (max-width: 1024px) {
+		right: 10px;
+		top: 5px;
+		right: vwxs(10);
+		top: vwxs(5);
+	}
 	@media screen and (max-width: 768px) {
 		background: #1b1b1b;
 		position: relative;
@@ -73,11 +79,14 @@ nav.about{
 .show-nav-about{
 	nav.about{
 		display: block;
-		@media screen and (max-width: 768px) {
-			display: inherit;
-		}
 		a{
 			color: #535353;
+		}
+		@media screen and (max-width: 768px) {
+			display: inherit;
+			a{
+				color: #fff;
+			}
 		}
 	}
 }

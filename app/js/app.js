@@ -348,6 +348,12 @@ $(function(){
 		}).on('click', function(){
 			$(this).addClass('on').siblings().removeClass('on');
 			$('.map-container .place-info').eq($(this).index()).addClass('on').siblings().removeClass('on');
+		}).on('mouseover', function(){
+			$(this).addClass('on').siblings().removeClass('on');
+			$('.map-container .place-info').eq($(this).index()).addClass('on').siblings().removeClass('on');
+		}).on('mouseoout', function(){
+			$(this).addClass('on').removeClass('on');
+			$('.map-container .place-info').eq($(this).index()).removeClass('on');
 		});
 	}
 });

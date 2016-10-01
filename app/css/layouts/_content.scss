@@ -292,12 +292,105 @@
 					}
 				}
 			}
+			@media screen and (max-width: 768px) {
+				padding: 0;
+				min-height: 100%;
+				.tabs {
+					height: 35.5px;
+					height: vwxs(71);
+					margin-bottom: 30px;
+					margin-bottom: vwxs(30);
+					position: relative;
+					border-bottom: 1px solid #717171;
+					a{
+						width: 48%;
+						line-height: 35px;
+						height: 35px;
+						line-height: vwxs(70);
+						height: vwxs(70);
+						display: inline-block;
+						border-bottom: 1px solid rgba(0, 0, 0, 0);
+						&+a{
+							margin-left: 0;
+						}
+
+						&:hover{
+							color: rgba(195, 13, 35,0.85);
+							border-color: rgba(195, 13, 35, 0.85);
+
+						}
+						&:focus,&.on{
+							color: rgba(195, 13, 35, 1);
+							border-color: rgba(195, 13, 35, 1);
+						}
+					}
+					span{
+						max-width: 95%;
+						vertical-align: middle;
+						color: #717171;
+						transition-duration: 0.25s;
+						transition-property: color border-color;
+						line-height: 1.2;
+					}
+
+				}
+				.map-container{
+					padding: 0;
+					width: 100%;
+					.map{
+						width: 350%;
+						margin-left: -219%;
+						padding-top: percentage(900/640);
+					}
+				}
+				.place-info-container{
+					position: relative;
+					padding-top: 0;
+					width: 100%;
+					.place-info{
+						line-height: 47px;
+						line-height: vwxs(94);
+						height: auto;
+						position: relative;
+						&:before{
+							display: none;
+						}
+						section{
+							display: block;
+							width: 100%;
+							height: 0;
+							overflow: hidden;
+							margin-bottom: 0;
+							transition: height 0.2s margin-bottom 0.2s;
+
+							p{
+								max-width: percentage(520/640);
+								margin: 0 auto;
+								background-color: #262626;
+								text-align: center;
+								color: #fff;
+							}
+							&.on{
+								opacity: 1;
+								height: 47px;
+								height: vwxs(94);
+								margin-bottom: percentage(30/640);
+							}
+						}
+						&.on{
+						}
+					}
+				}
+			}
 		}
 
 		.aboutus{
 			position:relative;
 			width: 100%;
 			padding: percentage(80/1006) percentage(90/1006) percentage(25/1006) ;
+			@media screen and (max-width: 768px) {
+				padding: 0;
+			}
 			.aboutus-container{
 				.about-kv{
 					padding: percentage(224/834) 0 0;
@@ -305,6 +398,9 @@
 					width: 100%;
 					height: 0;
 					position:relative;
+					@media screen and (max-width: 768px) {
+						padding: percentage(234/640) 0 0;
+					}
 					img{
 						position: absolute;
 						top:0;
@@ -317,31 +413,54 @@
 				.tabs{
 					height: 71px;
 					border-bottom: 1px solid #717171;
+					margin-bottom: 70px;
+					span{
+						vertical-align: middle;
+					}
 					a{
+						margin-top: 1px;
 						width: 263px;
+						max-width: 40%;
 						height: 70px;
 						line-height: 70px;
-						vertical-align: middle;
 						color: #717171;
+						border-bottom: 1px solid rgba(0, 0, 0, 0);
 						transition-duration: 0.25s;
 						transition-property: color border-color;
-						border-bottom: 1px solid rgba(0, 0, 0, 0);
-
 						&:hover{
-							color: rgba(195, 13, 35,0.85);
+							color: rgba(195, 13, 35, 0.85);
 							border-color: rgba(195, 13, 35, 0.85);
-
 						}
 						&:focus,&.on{
 							color: rgba(195, 13, 35, 1);
 							border-color: rgba(195, 13, 35, 1);
 						}
-
 						&+a{
-							margin-left: 170px;
+							margin-left: 10%;
 						}
 					}
-					margin-bottom: 70px;
+					@media screen and (max-width: 768px) {
+						height: 35.5px;
+						height: vwxs(71);
+						margin-bottom: 30px;
+						margin-bottom: vwxs(30);
+						a{
+							width: 48%;
+							display: inline-block;
+							&+a{
+								margin-left: 0;
+							}
+						}
+						span{
+							width: auto;
+							line-height: 35px;
+							height: 35px;
+							line-height: vwxs(70);
+							height: vwxs(70);
+
+						}
+
+					}
 				}
 				.text-content{
 					line-height: 2.5em;
@@ -359,12 +478,19 @@
 					}
 					// article{
 					// }
+					@media screen and (max-width: 768px) {
+						padding: 0 25px;
+						padding: 0 vwxs(50);
+					}
 				}
 				.date,.year{
 					color: #c30d23;
 				}
 				.stone{
 					min-height: 125px;
+					@media screen and (max-width: 768px) {
+						line-height: 1.5em;
+					}
 				}
 				.dot{
 					width: 10px;
@@ -396,6 +522,20 @@
 						width: 2px;
 						background-color: #c30d23;
 					}
+					@media screen and (max-width: 1024px) {
+						height: calc(100% - 30px);
+						width: 1px;
+						left: calc(25% - 1px);
+						top: 1.5em;
+						&:after{
+							top:20%;
+							height: 60%;
+							width: 1px;
+						}
+					}
+				}
+				.text-left{
+					text-align: left;
 				}
 			}
 		}
