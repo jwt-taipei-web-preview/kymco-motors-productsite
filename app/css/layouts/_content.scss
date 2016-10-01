@@ -447,6 +447,10 @@
 						margin-bottom: vwxs(30);
 						a{
 							width: 48%;
+							line-height: 35px;
+							height: 35px;
+							line-height: vwxs(70);
+							height: vwxs(70);
 							display: inline-block;
 							&+a{
 								margin-left: 0;
@@ -454,10 +458,6 @@
 						}
 						span{
 							width: auto;
-							line-height: 35px;
-							height: 35px;
-							line-height: vwxs(70);
-							height: vwxs(70);
 
 						}
 
