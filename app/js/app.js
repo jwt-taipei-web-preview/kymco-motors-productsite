@@ -331,12 +331,16 @@ $(function(){
 	});
 
 	function bindCatalogLink(){
-		$('#content .inner a').on('click', function(){
+		$('#content .inner a:not(.top)').on('click', function(){
 			content = rootPath + $(this).attr('data-content') + '/';
 			// console.log(content);
 			cat = $(this).attr('data-cat');
 			cata = $(this).attr('data-cata');
 			updateContent(content, cat, cata);
+		});
+		$('#content .inner a.top').on('click', function(){
+			TweenMax.to('#content .inner',0.3,{scrollTop: 0});
+			return false;
 		});
 	}
 	function prepareMap(){

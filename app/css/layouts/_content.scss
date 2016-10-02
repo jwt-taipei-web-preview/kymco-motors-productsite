@@ -109,7 +109,7 @@
 				}
 			}
 			.description{
-				line-height: 3em;
+				line-height: 1.5em;
 				@media screen and (max-width: 768px) {
 					line-height: 1.5em;
 				}
@@ -136,6 +136,10 @@
 					left: calc((100% - 80%) / 2);
 					background: #c30d23;
 				}
+				&.zip{
+					margin: 0;
+					padding: 0;
+				}
 			}
 
 			.gallery{
@@ -150,6 +154,11 @@
 					list-style: none;
 					img{
 						width: 100%;
+					}
+					@media screen and (max-width: 768px) {
+						&+li{
+							margin-top: 1em;
+						}
 					}
 				}
 			}
@@ -174,6 +183,9 @@
 							color: #c30d23;
 							font-size: 2em;
 						    text-indent: -0.5em;
+						}
+						span{
+							max-width: 96%;
 						}
 					}
 					.text-right{
@@ -276,7 +288,7 @@
 				position: absolute;
 				bottom:0;
 				right:0;
-				width: percentage(525/930);
+				width: percentage(700/930);
 				padding-top: percentage(70/930);
 				.place-info{
 					position:absolute;
@@ -296,9 +308,26 @@
 			@media screen and (max-width: 768px) {
 				padding: 0;
 				min-height: 100%;
+				@media screen and (max-width: 768px) {
+					.kv{
+						margin: 0;
+						width: 100%;
+						height: 0;
+						position:relative;
+						padding: percentage(234/640) 0 0;
+					}
+					img{
+						position: absolute;
+						top:0;
+						left:0;
+						height: auto;
+						width: 100%;
+						display: block;
+					}
+				}
 				.tabs {
-					height: 35.5px;
-					height: vwxs(71);
+					min-height: 35.5px;
+					min-height: vwxs(71);
 					margin-bottom: 30px;
 					margin-bottom: vwxs(30);
 					position: relative;
@@ -306,9 +335,9 @@
 					a{
 						width: 48%;
 						line-height: 35px;
-						height: 35px;
+						min-height: 35px;
 						line-height: vwxs(70);
-						height: vwxs(70);
+						min-height: vwxs(70);
 						display: inline-block;
 						border-bottom: 1px solid rgba(0, 0, 0, 0);
 						&+a{
@@ -336,9 +365,10 @@
 
 				}
 				.map-container{
-					padding: 0;
 					width: 100%;
+					padding: 0;
 					.map{
+						margin: percentage(234/640) 0 0;
 						width: 350%;
 						margin-left: -219%;
 						padding-top: percentage(900/640);
@@ -464,7 +494,7 @@
 					}
 				}
 				.text-content{
-					line-height: 2.5em;
+					line-height: 1.5em;
 
 					p{
 						margin-bottom: 2em;

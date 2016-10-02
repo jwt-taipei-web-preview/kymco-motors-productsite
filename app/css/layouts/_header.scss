@@ -20,6 +20,7 @@ header {
 		letter-spacing: 3px;
 		position: relative;
 
+
 		a{
 			padding-left: 28px;
 			display: block;
@@ -176,6 +177,7 @@ header {
 				height: auto;
 				margin-top: xsp(85);
 				width: 100%;
+				padding-top: xsp(50);
 			}
 			nav.about{				
 				height: auto;
@@ -261,7 +263,7 @@ header {
 			// height: auto;
 			// margin-top: xsp(85);
 			overflow: hidden;
-			padding-top: xsp(50);
+			// padding-top: xsp(50);
 			>aside{
 				@include xsItem(640, 60, 10, 10, 0, 24);
 				position:relative;
