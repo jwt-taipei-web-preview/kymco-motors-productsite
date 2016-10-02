@@ -185,7 +185,7 @@
 						    text-indent: -0.5em;
 						}
 						span{
-							max-width: 96%;
+							max-width: 94%;
 						}
 					}
 					.text-right{
@@ -196,6 +196,11 @@
 					.text-left{
 						@media screen and (max-width: 768px) {
 							white-space: nowrap;
+						}
+					}
+					.row{
+						+.row{
+							margin-top: 1em;
 						}
 					}
 				}
@@ -418,7 +423,7 @@
 		.aboutus{
 			position:relative;
 			width: 100%;
-			padding: percentage(80/1006) percentage(90/1006) percentage(25/1006) ;
+			padding: 80px percentage(90/1006) percentage(25/1006) ;
 			@media screen and (max-width: 768px) {
 				padding: 0;
 			}

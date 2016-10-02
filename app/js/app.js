@@ -112,15 +112,17 @@ $(function(){
 				scrollTop: 0
 			});
 		});
+		var currentViewPort = 'inner-page';
+		if($('.container.page-expand').length){
+			currentViewPort = 'page-expand';
+		}
 		switch(cat){
 			case 'worldwide':
-				changeViewport('inner-page show-nav-about');
-				break;
 			case 'about-us':
-				changeViewport('inner-page show-nav-about');
+				changeViewport(currentViewPort + ' show-nav-about');
 				break;
 			default:
-				changeViewport('inner-page');
+				changeViewport(currentViewPort);
 				break;
 		}
 		
