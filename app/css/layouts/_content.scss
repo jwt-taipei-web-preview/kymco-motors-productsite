@@ -92,6 +92,7 @@
 			margin-right: auto;
 			color: #535353;
 			display: inline-block;
+			position: relative;
 			figure{
 				margin-left: -20%;
 				@media screen and (max-width: 768px) {
@@ -176,8 +177,6 @@
 
 				.spec-table{
 					.text-left,.text-right{
-						@media screen and (max-width: 768px) {
-						}
 						&:before{
 							content:'-';
 							color: #c30d23;
@@ -191,6 +190,9 @@
 					.text-right{
 						&:before{
 							opacity: 0;
+						}
+						@media screen and (max-width: 768px) {
+							text-align: left;
 						}
 					}
 					.text-left{
@@ -215,7 +217,7 @@
 				background: url(../img/common/back.svg) no-repeat left center;
 				background-size: 8px 15px;
 				@media screen and (max-width: 768px) {
-					left: 20%;
+					left: 3%;
 					min-height: 15px;
 					top: 0;
 					margin-top: 16%;
@@ -593,6 +595,26 @@
 				.text-left{
 					text-align: left;
 				}
+			}
+		}
+		a.top{
+			position: fixed;
+			right:10%;
+			bottom: 10%;
+			&.fade{
+				height: 0;
+				opacity: 0;
+				overflow: hidden;
+				transition: opacity 0.2s linear 0s, height 0s linear 0.2s;
+				&.in{
+					height: auto;
+					opacity: 1;
+					transition: opacity 0.2s linear 0s, height 0s linear 0s;
+				}
+			}
+			@media screen and (max-width: 768px) {
+				right: 2%;
+				bottom: 10%;
 			}
 		}
 	}
