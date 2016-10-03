@@ -88,18 +88,17 @@ $(function(){
 			$('.expand').trigger('click');
 			return false;
 		}
-		pushState(content, cat, cata);
 		$('#content').addClass('fade').removeClass('in');
+			pushState(content, cat, cata,'update content'+content);
 
 		$.get(content, function(product){
-
 			$(product).each(function(i, element){
 				if($(element).attr('role') === 'main'){
 					$('#content .inner').html(element);
 				}
 			});
 
-			$('#content').addClass('in').removeClass('fade');
+			$('#content').addClass('in');
 
 			kvFreeze();
 
@@ -131,6 +130,7 @@ $(function(){
 				scrollTop: 0
 			});
 				
+
 			$('<a href=\'#\' class=\'top fade\'><img src=\''+rootPath+'img/common/top.png\'></a>')
 				.appendTo($('#content .inner'));
 			$('#content .inner').unbind('scroll').on('scroll', function(){
@@ -160,8 +160,8 @@ $(function(){
 		}
 	}
 
-	function pushState(content, cat, cata){
-		console.log(content);
+	function pushState(content, cat, cata, ref){
+		// console.log(ref);
         history.pushState({
           content: content,
           category: cat,
@@ -231,7 +231,7 @@ $(function(){
 				initialSlide: kvkeep.attr('data-index')
 			});
 			kvkeep.addClass('hide');
-			pushState(rootPath, null, null);
+			pushState(rootPath, null, null,'expand');
 		}, 750);
 	});
 
@@ -367,7 +367,7 @@ $(function(){
 	});
 
 	function bindCatalogLink(){
-		$('#content .inner a:not(.top)').on('click', function(){
+		$('#content .inner a:not(.top)').unbind('click').on('click', function(){
 			content = rootPath + $(this).attr('data-content') + '/';
 			// console.log(content);
 			cat = $(this).attr('data-cat');
