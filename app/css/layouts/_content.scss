@@ -220,7 +220,7 @@
 					left: 3%;
 					min-height: 15px;
 					top: 0;
-					margin-top: 16%;
+					margin-top: 1%;
 					background-size: 8px 15px;
 					span{
 						line-height: 1em;
@@ -597,9 +597,10 @@
 				}
 			}
 		}
+
 		a.top{
 			position: fixed;
-			right:10%;
+			right: 5%;
 			bottom: 10%;
 			&.fade{
 				height: 0;
