@@ -176,6 +176,7 @@
 				}
 
 				.spec-table{
+					line-height: 1.8em;
 					.text-left,.text-right{
 						&:before{
 							content:'-';
@@ -220,7 +221,7 @@
 					left: 3%;
 					min-height: 15px;
 					top: 0;
-					margin-top: 1%;
+					margin-top: 2%;
 					background-size: 8px 15px;
 					span{
 						line-height: 1em;
@@ -331,6 +332,9 @@
 						line-height: 1.5em;
 					}
 				}
+			}
+			@media (min-width: 768px) and (max-width: 1024px){
+				padding-top: percentage(100/615);
 			}
 			@media screen and (max-width: 768px) {
 				padding: 0;
@@ -522,14 +526,15 @@
 				}
 				.text-content{
 					line-height: 1.5em;
+					padding-bottom: 10%;
 
 					p{
 						margin-bottom: 2em;
 					}
 					&.fade{
 						height: 0;
-						overflow: hidden;
-						transition: opacity 0.15s linear 0s, height 0s linear 0.15s;
+						padding: 0;
+						transition: opacity 0.15s linear 0s, height 0s linear 0.15s, padding 0s linear 0.15s;
 						&.in{
 							height: auto;
 						}
@@ -543,6 +548,7 @@
 				}
 				.date,.year{
 					color: #c30d23;
+					white-space: nowrap;
 				}
 				.stone{
 					min-height: 125px;
@@ -602,6 +608,14 @@
 			position: fixed;
 			right: 5%;
 			bottom: 10%;
+			@media (min-width: 768px) and (max-width: 1024px) {
+				right: 2%;
+				bottom: 2%;
+			}
+			@media screen and (max-width: 768px) {
+				right: 2%;
+				bottom: 10%;
+			}
 			&.fade{
 				height: 0;
 				opacity: 0;
@@ -612,10 +626,6 @@
 					opacity: 1;
 					transition: opacity 0.2s linear 0s, height 0s linear 0s;
 				}
-			}
-			@media screen and (max-width: 768px) {
-				right: 2%;
-				bottom: 10%;
 			}
 		}
 	}

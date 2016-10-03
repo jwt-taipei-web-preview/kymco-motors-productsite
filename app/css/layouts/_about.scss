@@ -30,10 +30,10 @@ nav.about{
 		}
 	}
 	@media screen and (max-width: 1024px) {
-		right: 10px;
-		top: 5px;
-		right: vwxs(10);
-		top: vwxs(5);
+		right: 0;
+		top: 0;
+		margin-right: 5.5%;
+		margin-top: 2.5%;
 	}
 	@media screen and (max-width: 768px) {
 		background: #1b1b1b;
