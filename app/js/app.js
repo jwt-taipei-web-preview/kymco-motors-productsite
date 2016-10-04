@@ -121,7 +121,7 @@ $(function(){
 					c = $('li[data-cata='+cata+'] a').text();
 				}
 				$(span).html(c);
-				$(a).attr('class', 'back vertical-middle fontsize-20 fontsize-xs-36')
+				$(a).attr('class', 'back vertical-middle fontsize-30 fontsize-xs-36')
 					.append(span)
 					.attr('href', '#')
 					.on('click', function(){

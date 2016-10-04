@@ -177,6 +177,7 @@
 				.spec-table{
 					line-height: 1.8em;
 					.text-left,.text-right{
+						line-height: 1.5em;
 						&:before{
 							content:'-';
 							color: #c30d23;
@@ -212,16 +213,17 @@
 				position: absolute;
 				top: 0;
 				margin-top: 4%;
-				left: 17%;
-				padding-left: 12px;
-				background: url(../img/common/back.svg) no-repeat left center;
-				background-size: 8px 15px;
+				// left: 17%;
+				padding-left: 1.25em;
+				background: url(../img/common/back.svg) no-repeat left 0.28em;
+				background-size: 0.5em 1em;
 				@media screen and (max-width: 768px) {
 					left: 15%;
 					min-height: 15px;
 					top: 0;
 					margin-top: 5%;
-					background-size: 8px 15px;
+					background-size: 0.5em 1em;
+					background-position: left center;
 					span{
 						line-height: 1em;
 					}
@@ -277,6 +279,11 @@
 						&:hover,&.on{
 							transform: scale(1.9);
 							z-index: 2;
+						}			
+						&.disabled{
+							opacity: 0.7;
+							cursor: default;
+							pointer-events: none;
 						}
 					}
 				}
@@ -324,6 +331,13 @@
 					left:0;
 					transition-duration: 1.2s;
 					line-height: 20em;
+					a{
+						&.disabled{
+							opacity: 0.7;
+							cursor: default;
+							pointer-events: none;
+						}
+					}
 
 					&.on{
 						top: 0;
@@ -426,9 +440,17 @@
 							p{
 								max-width: percentage(520/640);
 								margin: 0 auto;
-								background-color: rgba(0,0,0, .85);
 								text-align: center;
-								color: #fff;
+								a{
+									background-color: rgba(0,0,0, .85);
+									transition: background-color 0.2s, color 0.2s;
+									display: block;
+									color: #fff;
+									&:hover{
+										background: #434343;
+										color: #c30d23;
+									}
+								}
 							}
 							&.on{
 								opacity: 1;
