@@ -83,13 +83,17 @@ $(function(){
 		$('.' + containerClasses).attr('class', containerClasses + ' ' + stat);
 	}
 
-	function updateContent(content, cat, cata, callback){
+	function updateContent(content, cat, cata, callback, isPopstate){
+		// console.log(content, cat, cata, callback || null);
+		isPopstate = isPopstate || false;
 		if(content === '/'){
 			$('.expand').trigger('click');
 			return false;
 		}
-		$('#content').addClass('fade').removeClass('in');
-			pushState(content, cat, cata,'update content'+content);
+		if(!isPopstate){
+			$('#content').addClass('fade').removeClass('in');
+				pushState(content, cat, cata,'update content'+content);
+		}
 
 		$.get(content, function(product){
 			$(product).each(function(i, element){
@@ -161,13 +165,24 @@ $(function(){
 	}
 
 	function pushState(content, cat, cata, ref){
-		// console.log(ref);
-        history.pushState({
+		var info = {
           content: content,
           category: cat,
           catalog: cata
-        }, document.title, content);
+        };
+		console.log('push ref:',ref,':',info);
+        history.pushState(info, document.title, content);
 	}
+	$(window).on('popstate', function(event){
+		var info = event.originalEvent.state;
+		console.log('pop',info);
+  		if(info === null){
+  			location.href = rootPath;
+  		}
+		updateContent(info.content, info.category, info.catalog, function(){}, true);
+		return true;
+
+	});
 
 	function getParam(name){
 		var r = new RegExp('^.*[?&]'+name+'[=]([^&]+).*$', 'i');
@@ -357,14 +372,6 @@ $(function(){
 		});		
 	}
 
-	$(window).on('popstate', function(r,g,b){
-		var info = r.originalEvent.state;
-  		if(info === null){
-  			location.href = rootPath;
-  		}
-
-		updateContent(info.content, info.cat, info.cata);
-	});
 
 	function bindCatalogLink(){
 		$('#content .inner a:not(.top)').unbind('click').on('click', function(){

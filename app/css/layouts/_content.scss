@@ -571,11 +571,11 @@
 					padding-top: 5px;
 				}
 				.hyphen{
-					height: calc(100% - 60px);
+					height: calc(100% - 2em);
 					background-color: #575757;
 					position: absolute;
 					left: calc(16.7% - 2px);
-					top: 40px;
+					top: 2.5em;
 					width: 3px;
 					&:after{
 						position: absolute;
@@ -587,10 +587,10 @@
 						background-color: #c30d23;
 					}
 					@media screen and (max-width: 1024px) {
-						height: calc(100% - 30px);
+						height: calc(100% - 2.5em);
 						width: 1px;
 						left: calc(25% - 1px);
-						top: 1.5em;
+						top: 2.5em;
 						&:after{
 							top:20%;
 							height: 60%;
