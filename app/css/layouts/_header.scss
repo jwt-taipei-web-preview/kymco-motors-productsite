@@ -258,6 +258,7 @@ header {
 				@include xsSubItem();
 			}
 		}
+
 		nav.menu{
 			height: 0;
 			margin: 0;
@@ -268,6 +269,7 @@ header {
 			// padding-top: xsp(50);
 			>aside{
 				@include xsItem(640, 60, 10, 10, 0, 24);
+				left: 0;
 				position:relative;
 				height: auto;
 				a{
@@ -275,6 +277,8 @@ header {
 					height: 1.5em;
 					line-height: 1.5em;
 					padding-left: xsp(60);
+					width: xsp(580);
+					left: 0;
 					svg{
 						display: none;
 					}
@@ -287,21 +291,26 @@ header {
 					>a{
 						background: #1b1b1b;
 						padding-left: xsp(60);
+						width: xsp(580);
+						left: 0;
 					}
 
 					ul{
 						margin-top: xsp(0);
 						position:relative;
 						height: auto;
+						width: xsp(580);
+						padding-left: xsp(60);
 						li{
 							@include xsItem(640, 0, 10, 10, 0, 24);
+							list-style: none;
+							left: 0;
 							position:relative;
 							padding-left:0;
 							height: 1.5em;
 							line-height: 1.5em;
 							transition-duration: 0s;
 							a{
-								padding-left: xsp(60);
 								@include xsSubItem();
 								height: 1.5em;
 							}

@@ -2,7 +2,6 @@
 /* Custom page header */
 #content {
 	margin: 0;
-	padding: 0;
 	position: fixed;
 	right: 0;
 	top: 0;
@@ -87,12 +86,12 @@
 
 		.product{
 			width: 100%;
-			padding: 0 10%;
 			margin-left: auto;
 			margin-right: auto;
 			color: #535353;
 			display: inline-block;
 			position: relative;
+			padding: percentage(80/640) 10% 0;
 			figure{
 				margin-left: -20%;
 				@media screen and (max-width: 768px) {
@@ -218,10 +217,10 @@
 				background: url(../img/common/back.svg) no-repeat left center;
 				background-size: 8px 15px;
 				@media screen and (max-width: 768px) {
-					left: 3%;
+					left: 15%;
 					min-height: 15px;
 					top: 0;
-					margin-top: 2%;
+					margin-top: 5%;
 					background-size: 8px 15px;
 					span{
 						line-height: 1em;
@@ -229,7 +228,6 @@
 				}
 			}
 		}
-
 
 		.worldwide{
 			position:relative;
@@ -428,7 +426,7 @@
 							p{
 								max-width: percentage(520/640);
 								margin: 0 auto;
-								background-color: #262626;
+								background-color: rgba(0,0,0, .85);
 								text-align: center;
 								color: #fff;
 							}
@@ -535,19 +533,17 @@
 						height: 0;
 						padding: 0;
 						transition: opacity 0.15s linear 0s, height 0s linear 0.15s, padding 0s linear 0.15s;
-						@media screen and (max-width: 768px) {
-							overflow: hidden;
-						}
+						overflow: hidden;
 						&.in{
 							height: auto;
+							@media screen and (max-width: 768px) {
+								padding: 0 25px;
+								padding: 0 vwxs(50);
+							}
 						}
 					}
 					// article{
 					// }
-					@media screen and (max-width: 768px) {
-						padding: 0 25px;
-						padding: 0 vwxs(50);
-					}
 				}
 				.date,.year{
 					color: #c30d23;
@@ -572,6 +568,7 @@
 				.stone-range{
 					position: relative;
 					margin-bottom: 10px;
+					padding-top: 5px;
 				}
 				.hyphen{
 					height: calc(100% - 60px);
