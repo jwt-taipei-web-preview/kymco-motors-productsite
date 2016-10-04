@@ -170,12 +170,12 @@ $(function(){
           category: cat,
           catalog: cata
         };
-		console.log('push ref:',ref,':',info);
+		// console.log('push ref:',ref,':',info);
         history.pushState(info, document.title, content);
 	}
 	$(window).on('popstate', function(event){
 		var info = event.originalEvent.state;
-		console.log('pop',info);
+		// console.log('pop',info);
   		if(info === null){
   			location.href = rootPath;
   		}
@@ -245,7 +245,10 @@ $(function(){
 				autoplaySpeed: 6000,
 				initialSlide: kvkeep.attr('data-index')
 			});
-			kvkeep.addClass('hide');
+			kvkeep.addClass('fade');
+			setTimeout(function(){
+				kvkeep.addClass('hide');
+			}, 200);
 			pushState(rootPath, null, null,'expand');
 		}, 750);
 	});
@@ -319,13 +322,14 @@ $(function(){
 	function kvFreeze(){
 		var currentKv = $('.kv .slide .slick-current figure');
 		var index = $('.kv .slide .slick-current').index();
+		index = index > 0 ? index : 0;
 		var backgroundImage = currentKv.css('background-image') != 'none' ?
 			currentKv.css('background-image') :
 			'url(' + currentKv.attr('data-src') + ')';
 		// console.log(backgroundImage);
 		kvkeep.css('background-image', backgroundImage);
 		kvkeep.attr('data-index', index);
-		kvkeep.removeClass('hide');
+		kvkeep.removeClass('hide').addClass('fade in');
 		$('.kv .slide').slick('unslick');
 		$('header nav.menu li').removeClass('active');
 		$(this).addClass('active');
