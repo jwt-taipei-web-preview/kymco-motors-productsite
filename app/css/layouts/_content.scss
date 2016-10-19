@@ -9,7 +9,7 @@
 	height: 100%;
 	background: #fff;
 	color: #1b1b1b;
-	transition-duration: 0.25s;
+	transition: 0.45s width linear 0s, opacity 0.6s linear 0s;
 	.inner{
 		height: 100%;
 		overflow:auto;
@@ -212,7 +212,7 @@
 			.back{
 				position: absolute;
 				top: 0;
-				margin-top: 4%;
+				margin-top: 10%;
 				// left: 17%;
 				padding-left: 1.25em;
 				background: url(../img/common/back.svg) no-repeat left 0.28em;
@@ -658,8 +658,15 @@
 
 
 	}
+	&.in{
+		transition: 0.45s width linear 0s, opacity 0.6s linear 0s;
+	}
 }
 
 .page-expand #content{
 	width: 100%;
+	transition: 0.3s width linear 0s, opacity 0.6s linear 0s;
+	&.in{
+		transition: 0.3s width linear 0s, opacity 0.6s linear 0s;
+	}
 }

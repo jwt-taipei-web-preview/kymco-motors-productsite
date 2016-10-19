@@ -118,8 +118,9 @@
 }
 .inner-page-short{
 	.kv{
+		transition: 0.25s linear;
 		.keep{
-			transition: 0.45s ease-out;
+			transition: 0.25s linear;
 		}
 	}
 }

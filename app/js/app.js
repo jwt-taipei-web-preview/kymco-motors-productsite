@@ -92,17 +92,27 @@ $(function(){
 		}
 		if(!isPopstate){
 			$('#content').addClass('fade').removeClass('in');
-				pushState(content, cat, cata,'update content'+content);
 		}
 
-		$.get(content, function(product){
-			$(product).each(function(i, element){
+		$.get(content, function(response){
+			var title = 'KYMCO Inc.';
+			var htmlContent = '';
+			$(response).each(function(i, element){
+				if($(element).attr('property') === 'og:title'){
+					title = $(element).attr('content');
+				}
 				if($(element).attr('role') === 'main'){
-					$('#content .inner').html(element);
+					htmlContent = element;
 				}
 			});
+			if(!isPopstate){
+				pushState({content: content, catalog: cata, category: cat, title: title}, 'update content'+content);
+			}
 
-			$('#content').addClass('in');
+			$('#content .inner').html(htmlContent);
+			setTimeout(function(){
+				$('#content').addClass('in');
+			}, 100);
 
 			kvFreeze();
 
@@ -164,14 +174,11 @@ $(function(){
 		}
 	}
 
-	function pushState(content, cat, cata, ref){
-		var info = {
-          content: content,
-          category: cat,
-          catalog: cata
-        };
+	function pushState(info, ref){
+		// console.log('history.pushState('+JSON.stringify(info)+', '+(title || document.title)+', '+content+')');
 		// console.log('push ref:',ref,':',info);
-        history.pushState(info, document.title, content);
+		document.title = info.title;
+        history.pushState(info, info.title, info.content);
 	}
 	$(window).on('popstate', function(event){
 		var info = event.originalEvent.state;
@@ -179,6 +186,7 @@ $(function(){
   		if(info === null){
   			location.href = rootPath;
   		}
+		document.title = info.title;
 		updateContent(info.content, info.category, info.catalog, function(){}, true);
 		return true;
 
@@ -249,7 +257,7 @@ $(function(){
 			setTimeout(function(){
 				kvkeep.addClass('hide');
 			}, 200);
-			pushState(rootPath, null, null,'expand');
+			pushState({content: rootPath}, 'expand');
 		}, 750);
 	});
 
