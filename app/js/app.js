@@ -15,6 +15,8 @@ app.modules = {};
 var debug = /localhost[:]9000|github.io/.test(location.href);
 var github = /github.io/.test(location.href);
 var rootPath = github ? '/kymco-motors-productsite/' : '/';
+var documentTitle = document.title;
+
 $('.logo a').attr('href',rootPath);
 $.get($('.logo a img'). attr('src'), function(svg){
 	$('.logo a').html($('svg', svg));
@@ -177,6 +179,7 @@ $(function(){
 	function pushState(info, ref){
 		// console.log('history.pushState('+JSON.stringify(info)+', '+(title || document.title)+', '+content+')');
 		// console.log('push ref:',ref,':',info);
+		info.title = info.title || documentTitle;
 		document.title = info.title;
         history.pushState(info, info.title, info.content);
 	}
@@ -329,8 +332,11 @@ $(function(){
 	//點擊主選單後動作
 	function kvFreeze(){
 		var currentKv = $('.kv .slide .slick-current figure');
-		var index = $('.kv .slide .slick-current').index();
-		index = index > 0 ? index : 0;
+		var index = kvkeep.attr('data-index');
+		console.log($('.slick-list ').length);
+		if($('.slick-list ').length){
+			index = $('.kv .slide .slick-current').index();
+		}
 		var backgroundImage = currentKv.css('background-image') != 'none' ?
 			currentKv.css('background-image') :
 			'url(' + currentKv.attr('data-src') + ')';
