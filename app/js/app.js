@@ -115,7 +115,7 @@ $(function(){
 			$('#content .inner').html(htmlContent);
 			setTimeout(function(){
 				$('#content').addClass('in');
-				if(/catalog|noodle/ig.test(content)){
+				if(/catalog|noodoe/ig.test(content)){
 					prepareImage();
 					bindCatalogLink();
 				}
@@ -411,8 +411,8 @@ $(function(){
 		});		
 	}
 
-	//noodle direct link handle
-	if(getParam('content') === 'noodle' && getParam('cat') === 'noodle') {
+	//noodoe direct link handle
+	if(getParam('content') === 'noodoe' && getParam('cat') === 'noodoe') {
 		var content = rootPath + getParam('content') + '/', cat = getParam('cat');
 		// console.log(content);
 		var src = 'url(' + $('.kv .slide li:eq(0) figure').attr('data-src') + ')';
