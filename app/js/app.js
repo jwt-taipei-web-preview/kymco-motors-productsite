@@ -9,8 +9,6 @@ var app = {};
 app.partials = {};
 app.modules = {};
 
-// var dayOfMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-
 // 網址為 gulp 或者 github 時 設定成debug 模式
 var debug = /localhost[:]9000|github.io/.test(location.href);
 var github = /github.io/.test(location.href);
