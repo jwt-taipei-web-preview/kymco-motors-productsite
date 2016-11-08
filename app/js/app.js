@@ -25,6 +25,8 @@ $(function(){
 	$('.kv figure[data-src]').each(function(i,d){
 		$(this).attr('data-src', rootPath + $(this).attr('data-src'));
 	});
+
+	$('.menu').niceScroll();
 });
 //分享按鈕
 var share = {
@@ -83,6 +85,7 @@ $(function(){
 
 	function changeViewport(stat){
 		$('.' + containerClasses).attr('class', containerClasses + ' ' + stat);
+		$(window).trigger('resize');
 	}
 
 	function updateContent(content, cat, cata, callback, isPopstate){
@@ -92,7 +95,7 @@ $(function(){
 			$('.expand').trigger('click');
 			return false;
 		}
-		if(!isPopstate){
+		if(!isPopstate && location.pathname !== content){
 			$('#content').addClass('fade').removeClass('in');
 		}
 
@@ -108,7 +111,7 @@ $(function(){
 				}
 			});
 			if(!isPopstate){
-				pushState({content: content, catalog: cata, category: cat, title: title}, 'update content'+content);
+				pushState({content: content, catalog: cata, category: cat, title: title}, 'update content' + content);
 			}
 
 			$('#content .inner').html(htmlContent);
@@ -123,6 +126,7 @@ $(function(){
 			}
 
 			if(/catalog/ig.test(content)){
+				prepareImage();
 				bindCatalogLink();
 			}
 			if(/product/ig.test(content)){
@@ -141,6 +145,11 @@ $(function(){
 						return false;
 					});
 				$('#content .inner .product').append(a);
+
+				if($('#content .inner .product .gallery').length){
+					$('#content .inner .product .gallery nav').lightGallery(); 
+					$(window).trigger('resize');
+				}
 			}
 			TweenMax.to('#content .inner', 0.5, {
 				scrollTop: 0
@@ -190,7 +199,16 @@ $(function(){
   			location.href = rootPath;
   		}
 		document.title = info.title;
-		updateContent(info.content, info.category, info.catalog, function(){}, true);
+		updateContent(info.content, info.category, info.catalog, function(){
+			prepareImage();
+			$('#content nav a[data-content]').unbind('click').on('click', function(){
+				content = rootPath + $(this).attr('data-content') + '/';
+				// console.log(content);
+				cat = $(this).attr('data-cat');
+				cata = $(this).attr('data-cata');
+				updateContent(content, cat, cata);
+			});
+		}, true);
 		return true;
 
 	});
@@ -206,7 +224,7 @@ $(function(){
 
 	var kvkeep = $('.kv .keep');
 
-	$('header nav.menu li[data-content]').on('click', function(){
+	$('header nav.menu li[data-content], header nav.menu a[data-content]').on('click', function(){
 
 		var content = rootPath + $(this).attr('data-content') + '/', cat = $(this).attr('data-cat'), cata = $(this).attr('data-cata');
 		// console.log(content);
@@ -254,7 +272,7 @@ $(function(){
 				pauseOnFocus: false,
 				pauseOnHover: false,
 				autoplaySpeed: 6000,
-				initialSlide: kvkeep.attr('data-index')
+				initialSlide: kvkeep.attr('data-index') * 1
 			});
 			kvkeep.addClass('fade');
 			setTimeout(function(){
@@ -283,8 +301,12 @@ $(function(){
 		var item = new Hammer(ele, {});
 		item.on('tap', function () {
 			$(ele).parent().toggleClass('on').siblings().removeClass('on');
+			$(window).trigger('resize');
 		});
 	});
+	// $('header nav.menu').on('mouseover', function(){		
+	// 	$(window).trigger('resize');
+	// });
 
 	var burger = new Hammer($('.burger-container')[0], {});
 	burger.on('tap', function(){
@@ -293,48 +315,48 @@ $(function(){
 
 	//預載圖片
 	var imagePreload = {}, background = {};
-	$('figure[data-src]').each(function(idx, ele){
-		if($(ele).attr('data-src')){
-			imagePreload[$(ele).attr('data-src')] = false;
-			background[$(ele).attr('data-src')] = ele;
-		}
-	});
-
-	$.each(imagePreload, function(src, stat){
-		var img = new Image();
-		img.onload = function(){
-			imagePreload[src] = true;
-			var alldone = true;
-			$.each(imagePreload, function($s, $done){
-				alldone = $done && alldone;
-			});
-
-			//載入後 加到背景
-			$(background[src]).css('background-image', 'url(' + src + ')');
-
-			if(alldone){
-				//全部圖片下載完成
-				imageLoaded();
+	function prepareImage(){
+		$('figure[data-src]').each(function(idx, ele){
+			if($(ele).attr('data-src')){
+				imagePreload[$(ele).attr('data-src')] = false;
+				background[$(ele).attr('data-src')] = ele;
 			}
-		};
-		img.src = src;
-	});
-
-	function imageLoaded(){
-		$.each(imagePreload, function(src, stat){
-			$(background[src]).css('background-image', 'url(' + src + ')');
 		});
-		var litMotor = $('.blend').prev();
-		$('.blend').css('background-image',
-			'url(' + $('.blend').attr('data-src') + '), url(' + $(litMotor).attr('data-src') + ')');
+	
+		$.each(imagePreload, function(src, stat){
+			var img = new Image();
+			img.onload = function(){
+				imagePreload[src] = true;
+				var alldone = true;
+				$.each(imagePreload, function($s, $done){
+					alldone = $done && alldone;
+				});
+	
+				if(alldone){
+					//全部圖片下載完成
+					imageLoaded();
+				}
+			};
+			img.src = src;
+		});
+	
+		function imageLoaded(){
+			$.each($('figure[data-src]'), function(i, d){
+				$(d).css('background-image', 'url(' + $(d).attr('data-src') + ')');
+			});
+			var litMotor = $('.blend').prev();
+			$('.blend').css('background-image',
+				'url(' + $('.blend').attr('data-src') + '), url(' + $(litMotor).attr('data-src') + ')');
+		}
 	}
+	prepareImage();
 
 	//點擊主選單後動作
 	function kvFreeze(){
 		var currentKv = $('.kv .slide .slick-current figure');
 		var index = kvkeep.attr('data-index');
-		console.log($('.slick-list ').length);
-		if($('.slick-list ').length){
+		// console.log($('.slick-list ').length);
+		if($('.kv .slick-list ').length){
 			index = $('.kv .slide .slick-current').index();
 		}
 		var backgroundImage = currentKv.css('background-image') != 'none' ?
@@ -390,6 +412,26 @@ $(function(){
 		});		
 	}
 
+	//noodle direct link handle
+	if(getParam('content') === 'noodle' && getParam('cat') === 'noodle') {
+		var content = rootPath + getParam('content') + '/', cat = getParam('cat');
+		// console.log(content);
+		var src = 'url(' + $('.kv .slide li:eq(0) figure').attr('data-src') + ')';
+		setTimeout(function(){
+			$('.kv .keep').css('background-image', src );	
+		}, 500);
+		updateContent(content, cat, null, function(){
+			// prepareMap();
+			$('#content nav a[data-content]').unbind('click').on('click', function(){
+				content = rootPath + $(this).attr('data-content') + '/';
+				// console.log(content);
+				cat = $(this).attr('data-cat');
+				cata = $(this).attr('data-cata');
+				updateContent(content, cat, cata);
+			});
+		});		
+	}
+
 
 	function bindCatalogLink(){
 		$('#content .inner a:not(.top)').unbind('click').on('click', function(){
@@ -418,6 +460,31 @@ $(function(){
 			$('.map-container .place-info').eq($(this).index()).removeClass('on');
 		});
 	}
+
+	$(window).on('resize', function(){
+		if($('#content .inner .product .gallery nav').length){
+			if($(window).width() > 768){
+				if(!$('.slick-list').length ){
+					$('#content .inner .product .gallery nav').slick({
+						infinite: true,
+						autoplay: false,
+						slidesToShow: 3,
+						slidesToScroll: 1
+					});
+				}else{
+					$('#content .inner .product .gallery nav').addClass('fade').removeClass('in');
+					setTimeout(function(){
+						$('#content .inner .product .gallery nav').addClass('in');
+						$('#content .inner .product .gallery nav').slick('reinit');
+					}, 350);
+				}
+			}else{
+				if($('.slick-list').length ){
+					$('#content .inner .product .gallery nav').slick('unslick');
+				}
+			}
+		}
+	});
 
 });
 

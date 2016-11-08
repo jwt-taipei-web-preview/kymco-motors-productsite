@@ -25,6 +25,9 @@
 			figure{
 				@include xsItem(640,640,0,0,0,0);
 				position: relative;
+				background-size: 65%;
+				background-repeat: no-repeat;
+				background-position: center;
 				img{
 					@include xsSubItem();
 					max-width: 100%;
@@ -147,19 +150,44 @@
 				h4{
 					margin-bottom: 2em;
 				}
-				ul{
+				nav{
 					padding:0;
 				}
-				li{
+				a{
 					list-style: none;
-					img{
-						width: 100%;
+					figure{
+						height: 0;
+						display: block;
+						padding-top: percentage(161 / 213);
+						margin: 0;
+						position: relative;
+
+						img{
+							width: 100%;
+							position: absolute;
+							@include xsSubItem();
+						}
 					}
 					@media screen and (max-width: 768px) {
-						&+li{
+						&+a+a{
 							margin-top: 1em;
 						}
 					}
+				}
+				.slick-prev, .slick-next{
+					display: block;
+					height: 31px !important;
+					width: 16px !important;
+					color: transparent;
+					&:before, &:after{
+						display: none;
+					}
+				}
+				.slick-prev{
+					background: rgba(0, 0, 0, 0) url("../img/gallery/prev.svg") no-repeat scroll 0 0 / cover !important;
+				}
+				.slick-next{
+					background: rgba(0, 0, 0, 0) url("../img/gallery/next.svg") no-repeat scroll 0 0 / cover !important;
 				}
 			}
 
@@ -623,6 +651,92 @@
 				.text-left{
 					text-align: left;
 				}
+			}
+		}
+
+		.noodle{
+			margin: 80px auto ;
+
+			img{
+				display: block;
+				width: 80%;
+				margin: 0 auto;
+
+				&.butt{
+					margin-top: 10%;
+				}
+			}
+			aside.nav{
+				width: 90%;
+				margin: 0 auto;
+			}
+			nav{
+				figure{
+					@include xsItem(640,640,0,0,0,0);
+					position: relative;
+					background-size: 65%;
+					background-repeat: no-repeat;
+					background-position: center;
+					img{
+						@include xsSubItem();
+						max-width: 100%;
+						max-height: 100%;
+						transform: scale(0.8);
+						transition-duration: 0.25s;
+					}
+					figcaption{
+						color: #535353;
+						position: absolute;
+						bottom: 0;
+						margin-bottom: xsp(0);
+						left:0;
+						width: 100%;
+						line-height: 2em;
+						&:before{
+							content: '';
+							height: 2px;
+							width: 222px;
+							position: absolute;
+							bottom: 0;
+							left: calc((100% - 222px) / 2);
+							background: #595656;
+						}
+						&:after{
+							content: '';
+							height: 2px;
+							width: 0;
+							position: absolute;
+							bottom: 0;
+							left: 50%;
+							background: #c30d23;
+							transition-duration: 0.25s;
+						}
+					}
+					&:hover{
+						figcaption:after{
+							content: '';
+							height: 2px;
+							width: 118px;
+							position: absolute;
+							bottom: 0;
+							left: calc((100% - 118px) / 2);
+							background: #c30d23;
+						}
+						img{
+							transform: scale(1) translate(-2%,-2%);
+							transition-duration: 20s;
+						}
+					}
+					@media screen and (max-width: 768px) {
+						height: 55%;
+						figcaption{
+							margin-bottom: xsp(-30);
+						}
+					}
+				}
+			}
+			@media screen and (max-width: 768px) {
+				margin: 10% auto 5%;
 			}
 		}
 
