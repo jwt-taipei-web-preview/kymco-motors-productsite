@@ -51,7 +51,7 @@ const testLintOptions = {
 gulp.task('lint', lint('app/js/**/*.js'));
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
-gulp.task('html', ['css', 'js', 'about-us', 'worldwide', 'noodle', 'catalog', 'product'], () => {
+gulp.task('html', ['css', 'js', 'about-us', 'worldwide', 'noodoe', 'catalog', 'product'], () => {
 
   return gulp.src('app/*.html')
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
@@ -80,11 +80,11 @@ gulp.task('worldwide', () => {
     .pipe(gulp.dest('dist/worldwide/'));
 });
 
-gulp.task('noodle', () => {
+gulp.task('noodoe', () => {
   
-  return gulp.src('app/noodle/**/*.html')
+  return gulp.src('app/noodoe/**/*.html')
     .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
-    .pipe(gulp.dest('dist/noodle/'));
+    .pipe(gulp.dest('dist/noodoe/'));
 });
 
 gulp.task('about-us', () => {
