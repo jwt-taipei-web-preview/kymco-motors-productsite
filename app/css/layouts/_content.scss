@@ -672,6 +672,94 @@
 					background-size: cover;
 				}
 			}
+			article{
+				@include xsSubItem();
+				// width: 842px;
+				h2{
+					img{
+						width: 21%;
+					}
+					margin: 0 auto 2.7%;
+				}
+				figure{
+					>img{
+						width: 100%;
+					}
+				}
+
+				p{
+					margin-bottom: 3%;
+					line-height: 1.7em;
+				}
+
+				ul{
+					list-style: none;
+					padding: 0;
+					li{
+						list-style: none;
+						padding: 0 2.5%;
+						p{
+							max-width: 100%;
+							margin: 0 auto;
+							width: 100%;
+							line-height: 1.2em;							
+							-webkit-hyphens: auto;
+							-moz-hyphens: auto;
+							-ms-hyphens: auto;
+							hyphens: auto;
+						}
+					}
+
+					&.a{
+						margin: 0 -3.6% 0 -0.4%;
+						figure{
+							margin-bottom: 5%;
+							width: 63%;
+						}
+
+					}
+
+					&.b{
+						margin: 0 -4% 0 -3%;
+						figure{
+							margin-bottom: 5%;
+							width: 72%;
+							margin: 0 auto 14%;
+						}
+						li{
+							margin-bottom: 14%;
+						}
+					}
+				}
+
+				.row{
+					margin-bottom: 3%;
+				}
+				.hr{
+					img{
+						width: 20.5%;
+					}
+				}
+
+				h3{
+					margin: 10% 0 2%;
+				}
+
+				.stop-mode{
+					>.hr{
+						margin-bottom: 2%;
+					}
+					position: relative;
+
+					.vertical-middle{
+						height: 100%;
+						padding-left: 33.333333%;
+						aside{
+							width: 66.6666666%;
+						}
+					}
+				}
+			}
 			.butt{
 				@media screen and (max-width: 768px) {
 					@include xsItem(515,99,0,0,62,0);

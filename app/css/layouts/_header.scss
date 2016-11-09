@@ -1,6 +1,6 @@
 header {
 	height: 100%;
-	width: 300px;
+	width: 320px;
 	position: fixed;
 	left:0;
 	top:0;
@@ -53,7 +53,7 @@ header {
 
 				li{
 					width: 100%;
-					padding-left: 88px;
+					padding-left: 50px;
 					transition-duration: 0.35s;
 					a{
 						padding:0;
@@ -71,7 +71,7 @@ header {
 			}
 			&:hover, &.on{
 				>a{
-					padding-left: 88px;
+					padding-left: 50px;
 					color: #e60012;
 					background:#0c0407;
 					transition-delay: 0s;
