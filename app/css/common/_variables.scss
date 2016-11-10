@@ -80,32 +80,32 @@ $browser-lg-viewport: 1366; // Default
 }
 @mixin xsItem($width, $height, $top, $bottom, $left, $right, $context: $browser-xs-viewport) {
 	margin: 0;
-	width: xsp($width);
+	width: xsp($width, $context);
 	height: 0;
 	position: absolute;
-	padding-top: xsp($height);
+	padding-top: xsp($height, $context);
 
 	@if($left > 0) {
-		margin-left: xsp($left);
+		margin-left: xsp($left, $context);
 		left: 0;
 		right: 0;
-		margin-right: xsp($right);
+		margin-right: xsp($right, $context);
 		z-index: 2;
 	}@else{
 		right: 0;
 		left: auto;
-		margin-right: xsp($right);
+		margin-right: xsp($right, $context);
 		z-index: 1;
 	}
 	@if($top > 0) {
 		top: 0;
 		bottom: 0;
-		margin-top: xsp($top);
-		margin-bottom: xsp($bottom);
+		margin-top: xsp($top, $context);
+		margin-bottom: xsp($bottom, $context);
 	}@else{
 		bottom: 0;
 		top: auto;
-		margin-bottom: xsp($bottom);
+		margin-bottom: xsp($bottom, $context);
 	}
 }
 
@@ -124,6 +124,7 @@ $browser-lg-viewport: 1366; // Default
 @for $i from 6 to 150 {
 	.fontsize-#{$i} {
 		font-size: #{$i}px;
+		font-size: #{$i/19.2}vw;
 	}
 }
 

@@ -141,6 +141,19 @@ $(function(){
 						$(window).trigger('resize');
 					}
 				}
+				if(/noodoe/ig.test(content)){
+					var a = document.createElement('a');
+					var span = document.createElement('span');
+					$(span).html('back');
+					$(a).attr('class', 'back vertical-middle fontsize-30 fontsize-xs-36')
+						.append(span)
+						.attr('href', '#')
+						.on('click', function(){
+							$('a.expand').trigger('click');
+							return false;
+						});
+					$('#content .inner .noodoe article').append(a);
+				}
 				
 			}, 100);
 

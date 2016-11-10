@@ -165,12 +165,14 @@ header {
 		// overflow-y: hidden;
 		width: 100%;
 		transition-duration: 0.35s;
+		overflow: hidden;
 
 		&:hover{
 			background: rgba(27,27,27, 0.95);
 		}
 		&.on{
-			// height: auto;
+			height: auto;
+			overflow: auto;
 			.bars{
 				opacity: 0;
 			}
