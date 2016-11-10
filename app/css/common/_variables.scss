@@ -124,6 +124,9 @@ $browser-lg-viewport: 1366; // Default
 @for $i from 6 to 150 {
 	.fontsize-#{$i} {
 		font-size: #{$i}px;
+	}
+	.fontsizev-#{$i} {
+		font-size: #{$i}px;
 		font-size: #{$i/19.2}vw;
 	}
 }
