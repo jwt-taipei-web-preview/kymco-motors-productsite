@@ -20,6 +20,8 @@
 		var cat = encodeURIComponent('noodoe');
 		var github = /github.io/.test(location.href);
 		var rootPath = github ? '/kymco-motors-productsite/' : '/';
+		staging = /staging/.test(location.href);
+		rootPath = staging ? '/staging/' : rootPath;
 		location.href = rootPath + '?content=' + content +'&cat=' + cat;
 
 	</script>
@@ -246,13 +248,8 @@
 					</aside>
 				</article>
 			</figure>
-			<!-- <figure data-src="../img/noodoe/kv@640.jpg" class="static hidden-md hidden-lg">
-				<h2><img src="../img/noodoe/logo.png" alt="noodoe"></h2>
-				<p class="text-center fontsizev-20 fontsize-xs-32">Noodoe puts the rider at the center of everything and makes every moment – from when you approach your KYMCO,through the journey,the parking, when you return, even stopping at a red light – an amazing and more-fun experience.It's a brilliant interplay of technologies and human needs that elevates your every interaction with your scooter into a heart-winning experience.</p>
-
-			</figure> -->
 			<aside class="nav">
-				<nav class="row fontsizev-20 text-center">
+				<nav class="row fontsize-20 text-center">
 					<a data-content="product/maxi-scooters/AK-550" data-cata="maxi-scooters"
 					class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 						<figure data-src="../img/catalog/Maxi-Scooter_9_AK-550.png">
@@ -271,7 +268,6 @@
 					</a>
 				</nav>
 			</aside>
-			<figure data-src="../img/noodoe/footer@640.jpg" class="butt hidden-md hidden-lg" src="../img/noodoe/footer@640.jpg"></figure>
 		</section>
   	</body>
 </html>

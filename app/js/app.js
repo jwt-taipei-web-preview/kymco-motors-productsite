@@ -12,7 +12,9 @@ app.modules = {};
 // 網址為 gulp 或者 github 時 設定成debug 模式
 var debug = /localhost[:]9000|github.io/.test(location.href);
 var github = /github.io/.test(location.href);
+var stage = /staging/.test(location.href);
 var rootPath = github ? '/kymco-motors-productsite/' : '/';
+rootPath = stage ? '/staging/' : rootPath;
 var documentTitle = document.title;
 
 $('.logo a').attr('href',rootPath);
