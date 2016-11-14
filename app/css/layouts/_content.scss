@@ -999,6 +999,7 @@
 						margin-left: -15%;
 					}
 				}
+				
 			}
 			.butt{
 				@media screen and (max-width: 768px) {
@@ -1073,6 +1074,20 @@
 						height: 55%;
 					}
 				}
+			}
+			.video-container {
+				position:relative;
+				padding-bottom:56.25%;
+				padding-top:15px;
+				height:0;
+				overflow:hidden;
+				margin-bottom:60px;
+			}
+
+			.video-container iframe, .video-container object, .video-container embed {
+				position:absolute;
+				width:100%;
+				height:100%;
 			}
 		}
 
