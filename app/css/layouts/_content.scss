@@ -25,7 +25,7 @@
 			figure{
 				@include xsItem(640,640,0,0,0,0);
 				position: relative;
-				background-size: 65%;
+				background-size: 80%;
 				background-repeat: no-repeat;
 				background-position: center;
 				img{
@@ -109,6 +109,51 @@
 				width: 65%;
 				@media screen and (max-width: 768px) {
 					margin: 0;					
+				}
+				p{
+					white-space: nowrap;
+					span{
+						display: inline-block;
+						margin-right: 1em;
+					}
+					sub{
+						margin-top: 5px;
+						display: block;
+						bottom: auto;
+						color: #298CDA;
+					}
+					a{
+						padding-top: 30px;
+						width: 102px;
+						height: 0;
+						position: relative;
+						display: inline-block;
+						img{
+							@include xsSubItem();
+							width: auto;
+						}
+						.qrcode{
+							@include xsItem(100,100,35,0,1,0,102);
+							opacity: 0;
+							transform: translateY(-2%);
+							transition-duration: 0.25s;
+							box-shadow: 0 0 5px #000;
+						}
+						&:nth-child(3){
+							margin-left: 0.5em;
+							width: 86px;
+							.qrcode{
+								@include xsItem(100,100,35,0,-7,0,86);
+							}
+						}
+
+						&:hover{
+							.qrcode{
+								transform: none;
+								opacity: 1;
+							}
+						}
+					}
 				}
 			}
 			.description{
@@ -237,6 +282,16 @@
 				}
 			}
 
+			.download-app{
+				position: fixed;
+				@include xsItem(50, 50, 10 , 0, 0, 10, 320);
+
+				img{
+					@include xsSubItem();
+					height: auto;
+				}
+
+			}
 		}
 
 		.worldwide{
@@ -939,13 +994,13 @@
 							margin-top: 10%;
 							figure{
 								@media screen and (min-width: 769px) {
-									width: 46%;
+									width: 65%;
 								}
 							}
 							>aside{
 								>aside{
 									@media screen and (min-width: 769px) {
-										width: 54%;
+										width: 35%;
 									}
 									h4{
 										margin-top: 0;

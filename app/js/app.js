@@ -183,6 +183,8 @@ $(function(){
 				TweenMax.to('#content .inner', 0.3, {scrollTop: 0});
 				return false;
 			});
+
+			$('#content').trigger('page:update');
 		});
 		var currentViewPort = 'inner-page';
 		if($('.container.page-expand').length){

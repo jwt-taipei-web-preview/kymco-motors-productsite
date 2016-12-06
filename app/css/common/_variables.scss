@@ -85,7 +85,7 @@ $browser-lg-viewport: 1366; // Default
 	position: absolute;
 	padding-top: xsp($height, $context);
 
-	@if($left > 0) {
+	@if($left != 0) {
 		margin-left: xsp($left, $context);
 		left: 0;
 		right: 0;
@@ -97,7 +97,7 @@ $browser-lg-viewport: 1366; // Default
 		margin-right: xsp($right, $context);
 		z-index: 1;
 	}
-	@if($top > 0) {
+	@if($top != 0) {
 		top: 0;
 		bottom: 0;
 		margin-top: xsp($top, $context);
