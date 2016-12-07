@@ -559,19 +559,24 @@
 					height: 71px;
 					border-bottom: 1px solid #717171;
 					margin-bottom: 70px;
+					font-size: percentage(18/14);
 					span{
 						vertical-align: middle;
+						max-width: 90%;
+						white-space: nowrap;
 					}
 					a{
 						margin-top: 1px;
-						width: 263px;
-						max-width: 40%;
+						// width: 200px;
+						max-width: 10%;
+						padding: 0 2em;
 						height: 70px;
 						line-height: 70px;
 						color: #717171;
 						border-bottom: 1px solid rgba(0, 0, 0, 0);
 						transition-duration: 0.25s;
 						transition-property: color border-color;
+						position: relative;
 						&:hover{
 							color: rgba(195, 13, 35, 0.85);
 							border-color: rgba(195, 13, 35, 0.85);
@@ -583,6 +588,10 @@
 						&+a{
 							margin-left: 10%;
 						}
+					}
+					@media screen and (max-width: 1366px) {
+						padding: 0 1em;
+
 					}
 					@media screen and (max-width: 768px) {
 						height: 35.5px;
