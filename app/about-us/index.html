@@ -20,6 +20,8 @@
 		var cat = encodeURIComponent('about-us');
 		var github = /github.io/.test(location.href);
 		var rootPath = github ? '/kymco-motors-productsite/' : '/';
+		staging = /staging/.test(location.href);
+		rootPath = staging ? '/staging/' : rootPath;
 		location.href = rootPath + '?content=' + content +'&cat=' + cat;
 
 	</script>
