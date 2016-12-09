@@ -1,0 +1,306 @@
+
+#content {
+	.inner{
+		.aboutus{
+			position:relative;
+			width: 100%;
+			padding: 80px percentage(90/1006) percentage(25/1006) ;
+			@media screen and (max-width: 768px) {
+				padding: 0;
+			}
+			.aboutus-container{
+				.about-kv{
+					padding: percentage(224/834) 0 0;
+					margin: 0;
+					width: 100%;
+					height: 0;
+					position:relative;
+					@media screen and (max-width: 768px) {
+						padding: percentage(234/640) 0 0;
+					}
+					img{
+						position: absolute;
+						top:0;
+						left:0;
+						height: auto;
+						width: 100%;
+						display: block;
+					}
+				}
+				.tabs{
+					height: 71px;
+					border-bottom: 1px solid #717171;
+					margin-bottom: 70px;
+					font-size: percentage(18/14);
+					span{
+						vertical-align: middle;
+						max-width: 90%;
+						white-space: nowrap;
+					}
+					a{
+						margin-top: 1px;
+						// width: 200px;
+						max-width: 20%;
+						padding: 0 2em;
+						height: 70px;
+						line-height: 70px;
+						color: #717171;
+						border-bottom: 1px solid rgba(0, 0, 0, 0);
+						transition-duration: 0.25s;
+						transition-property: color border-color;
+						position: relative;
+						&:hover{
+							color: rgba(195, 13, 35, 0.85);
+							border-color: rgba(195, 13, 35, 0.85);
+						}
+						&:focus,&.on{
+							color: rgba(195, 13, 35, 1);
+							border-color: rgba(195, 13, 35, 1);
+						}
+						&+a{
+							margin-left: 2em;
+						}
+					}
+					@media screen and (max-width: 1366px) {
+						padding: 0 1em;
+
+					}
+					@media screen and (max-width: 768px) {
+						// height: 35.5px;
+						// height: vwxs(145);
+						margin-bottom: 0;
+						// margin-bottom: vwxs(30);
+						height: 150px;
+						height: vwxs(300);
+						overflow: hidden;
+						border: 0;
+						padding: 0 0 0.1em;
+						letter-spacing: -1em;
+						&:before{
+							display: none;
+						}
+						a{
+							letter-spacing: 1px;
+							letter-spacing: 0.5px;
+							height: 50%;
+							width: xsp(320);
+							border: 0;
+							padding: 0;
+							max-width: none;
+							line-height: 70px;
+							line-height: vwxs(140);
+							position: relative;
+							&+a{
+								margin-top: 0;
+								margin-left: 0;
+							}
+							&:after{
+								content: '';
+								position: absolute;
+								bottom: 0;
+								left: 0;
+								height: 100%;
+								content: 0;
+								width: 100%;
+								border-bottom: 1px solid #bfbfbf;
+							}
+							&:nth-child(2){
+								&:before{
+									content: '';
+									position: absolute;
+									top: xsp(10,150);
+									left: 0;
+									height: #{(100% - xsp(10,150))};
+									content: 0;
+									width: 100%;
+									border-left: 1px solid #bfbfbf;
+								}
+							}
+							&:nth-child(4){
+								&:before{
+									content: '';
+									position: absolute;
+									bottom: xsp(10,150);
+									left: 0;
+									height: #{(100% - xsp(10,150))};
+									content: 0;
+									width: 100%;
+									border-left: 1px solid #bfbfbf;
+								}
+							}
+
+							&:hover{
+								span{
+									position: relative;
+									&:after{
+										content: '';
+										position: absolute;
+										bottom: 0;
+										left: 0;
+										height: 100%;
+										width: 100%;
+										border-bottom: 3px solid #c30d23;
+									}
+								}
+							}
+						}
+						span{
+							width: auto;
+							height: 100%;
+							line-height: 70px;
+							line-height: vwxs(140);
+							vertical-align: middle;
+						}
+
+					}
+				}
+				.text-content{
+					line-height: 1.5em;
+					padding-bottom: 10%;
+					max-width: percentage(756 / 834);
+					margin: 0 auto;
+					color: #595859;
+
+					p{
+						margin-bottom: 2em;
+					}
+					h3{
+						margin-top: 2em;
+						margin-bottom: 1.5em;
+
+						&.t{
+							margin-top: 0;
+						}
+					}
+					&.fade{
+						height: 0;
+						padding: 0;
+						transition: opacity 0.15s linear 0s, height 0s linear 0.15s, padding 0s linear 0.15s;
+						overflow: hidden;
+						&.in{
+							height: auto;
+							@media screen and (max-width: 768px) {
+								padding: 0 25px;
+								padding: 0 vwxs(50);
+							}
+						}
+					}
+					// article{
+					// }
+				}
+				.date,.year{
+					color: #c30d23;
+					white-space: nowrap;
+				}
+				.stone{
+					min-height: 125px;
+					@media screen and (max-width: 768px) {
+						line-height: 1.5em;
+					}
+				}
+				.dot{
+					width: 10px;
+					height: 10px;
+					display: block;
+					position: absolute;
+					left: calc((100% - 0.3em) / 2);
+					top: calc((100% - 10px) / 2);
+					border-radius: 50%;
+					background: #c30d23;
+				}
+				.stone-range{
+					position: relative;
+					margin-bottom: 10px;
+					padding-top: 5px;
+				}
+				.hyphen{
+					height: calc(100% - 2em);
+					background-color: #575757;
+					position: absolute;
+					left: calc(16.7% - 2px);
+					top: 2.5em;
+					width: 3px;
+					&:after{
+						position: absolute;
+						content: '';
+						top:10%;
+						height: 80%;
+						display: block;
+						width: 2px;
+						background-color: #c30d23;
+					}
+					@media screen and (max-width: 1024px) {
+						height: calc(100% - 2.5em);
+						width: 1px;
+						left: calc(25% - 1px);
+						top: 2.5em;
+						&:after{
+							top:20%;
+							height: 60%;
+							width: 1px;
+						}
+					}
+				}
+				.text-left{
+					text-align: left;
+				}
+
+				.philosophy{
+					margin-top: xsp(20);
+					figure{
+						width: 100%;
+						position:relative;
+						margin-bottom: 2em;
+
+						img{
+							width: 100%;
+						}
+					}
+				}
+
+				.inside-kymco{
+					figure{
+						margin-bottom: 2em;
+						img{
+							width: 100%;
+						}
+					}
+					.ci{
+						position: relative;
+						figure{
+							height: 100%;
+							img {
+								max-width: 100%;
+								width: auto;						
+							}
+						}
+					}
+				}
+
+				.chairman{
+					figure{
+						width: percentage(254/756);
+						float: left;
+						margin-right: percentage(35/756);
+						margin-bottom: percentage(35/756);
+						img{
+							width: 100%;
+						}
+						@media screen and (max-width: 768px) {
+							width: 100%;
+						}
+					}
+
+					h3{
+						display: inline-block;
+						line-height: 1.5em;
+						span.highlight{
+							display: block;
+							color: #c30d23;
+						}
+					}
+				}
+			}
+		}
+	}
+}

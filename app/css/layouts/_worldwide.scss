@@ -1,0 +1,241 @@
+
+
+#content {
+	.inner{
+
+		.worldwide{
+			position:relative;
+			width: 100%;
+			overflow: hidden;
+			padding: percentage(5/1006) percentage(37/1006) percentage(40/1006) ;
+			// .map-container{
+			// 	position:relative;
+			// }
+			.map-container{
+				width: percentage(930/1006);
+				background-size: cover;
+				background-repeat: no-repeat;
+				padding-top: percentage(600/1006);
+				position:relative;
+				.map{
+					top:0;
+					left:0;
+					position: absolute;
+					width: 100%;
+					background-image: url(../img/worldwide/map.svg);
+					background-size: cover;
+					background-repeat: no-repeat;
+					padding-top: percentage(525/930);
+					.place{
+						position: absolute;
+						width: percentage(43/930);
+						padding-top: percentage(43/930);
+						display: block;
+						top:0;
+						left:0;
+						transition-duration: 0.25s;
+						transition-property: transform;
+						transform-origin: center center 1px;
+						border-radius: 50%;
+
+						img{
+							position: absolute;
+							display: block;
+							top:0;
+							left:0;
+							width: 100%;
+							height: 100%;
+
+						}
+
+						&:hover,&.on{
+							transform: scale(1.9);
+							z-index: 2;
+						}			
+						&.disabled{
+							opacity: 0.7;
+							cursor: default;
+							pointer-events: none;
+						}
+					}
+				}
+				&:before{
+					content: '';
+					top:0;
+					left:0;
+					position: absolute;
+					width: 100%;
+					padding-top: percentage(525/930);
+					height: 0;
+					opacity: 0.25;
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-color: rgba(0,0,0,0);
+
+				}
+			}
+			.map-info{
+				padding: percentage(83/ 930) 0 0;
+				height: 0;
+				bottom:0;
+				left:0;
+				width: percentage(145/930);
+				position: absolute;
+				img{
+					position: absolute;
+					top:0;
+					left:0;
+					width: 100%;
+					height: 100%;
+				}
+			}
+			.place-info-container{
+				position: absolute;
+				bottom:0;
+				right:0;
+				width: percentage(700/930);
+				padding-top: percentage(70/930);
+				.place-info{
+					position:absolute;
+					width: 100%;
+					height: 100%;
+					top: 250%;
+					left:0;
+					transition-duration: 1.2s;
+					line-height: 20em;
+					a{
+						&.disabled{
+							opacity: 0.7;
+							cursor: default;
+							pointer-events: none;
+						}
+					}
+
+					&.on{
+						top: 0;
+						line-height: 1.5em;
+					}
+				}
+			}
+			@media (min-width: 768px) and (max-width: 1024px){
+				padding-top: percentage(100/615);
+			}
+			@media screen and (max-width: 768px) {
+				padding: 0;
+				min-height: 100%;
+				@media screen and (max-width: 768px) {
+					.kv{
+						margin: 0;
+						width: 100%;
+						height: 0;
+						position:relative;
+						padding: percentage(234/640) 0 0;
+					}
+					img{
+						position: absolute;
+						top:0;
+						left:0;
+						height: auto;
+						width: 100%;
+						display: block;
+					}
+				}
+				.tabs {
+					min-height: 35.5px;
+					min-height: vwxs(71);
+					margin-bottom: 30px;
+					margin-bottom: vwxs(30);
+					position: relative;
+					border-bottom: 1px solid #717171;
+					a{
+						width: 48%;
+						line-height: 35px;
+						min-height: 35px;
+						line-height: vwxs(70);
+						min-height: vwxs(70);
+						display: inline-block;
+						border-bottom: 1px solid rgba(0, 0, 0, 0);
+						&+a{
+							margin-left: 0;
+						}
+
+						&:hover{
+							color: rgba(195, 13, 35,0.85);
+							border-color: rgba(195, 13, 35, 0.85);
+
+						}
+						&:focus,&.on{
+							color: rgba(195, 13, 35, 1);
+							border-color: rgba(195, 13, 35, 1);
+						}
+					}
+					span{
+						max-width: 95%;
+						vertical-align: middle;
+						color: #717171;
+						transition-duration: 0.25s;
+						transition-property: color border-color;
+						line-height: 1.2;
+					}
+
+				}
+				.map-container{
+					width: 100%;
+					padding: 0;
+					.map{
+						margin: percentage(234/640) 0 0;
+						width: 350%;
+						margin-left: -219%;
+						padding-top: percentage(900/640);
+					}
+				}
+				.place-info-container{
+					position: relative;
+					padding-top: 0;
+					width: 100%;
+					.place-info{
+						line-height: 47px;
+						line-height: vwxs(94);
+						height: auto;
+						position: relative;
+						&:before{
+							display: none;
+						}
+						section{
+							display: block;
+							width: 100%;
+							height: 0;
+							overflow: hidden;
+							margin-bottom: 0;
+							transition: height 0.2s margin-bottom 0.2s;
+
+							p{
+								max-width: percentage(520/640);
+								margin: 0 auto;
+								text-align: center;
+								a{
+									background-color: rgba(0,0,0, .85);
+									transition: background-color 0.2s, color 0.2s;
+									display: block;
+									color: #fff;
+									&:hover{
+										background: #434343;
+										color: #c30d23;
+									}
+								}
+							}
+							&.on{
+								opacity: 1;
+								height: 47px;
+								height: vwxs(94);
+								margin-bottom: percentage(30/640);
+							}
+						}
+						&.on{
+						}
+					}
+				}
+			}
+		}
+	}
+}
