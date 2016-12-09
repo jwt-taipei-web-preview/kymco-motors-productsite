@@ -114,6 +114,10 @@
 					&.on{
 						top: 0;
 						line-height: 1.5em;
+
+						@media screen and (max-width: 1280px) {
+							line-height: 1em;
+						}
 					}
 				}
 			}
