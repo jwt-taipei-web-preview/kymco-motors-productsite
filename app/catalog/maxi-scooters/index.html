@@ -28,6 +28,8 @@
     var cat = encodeURIComponent('on-road');
     var cata = encodeURIComponent('maxi-scooters');
     var github = /github.io/.test(location.href);
+		staging = /staging/.test(location.href);
+		rootPath = staging ? '/staging/' : rootPath;
     location.href=(github?'/kymco-motors-productsite/':'/') + '?content=' + content +'&cat=' + cat +'&cata=' + cata;
     
   </script>

@@ -20,6 +20,8 @@
 		var cat = encodeURIComponent('worldwide');
 		var github = /github.io/.test(location.href);
 		var rootPath = github ? '/kymco-motors-productsite/' : '/';
+		staging = /staging/.test(location.href);
+		rootPath = staging ? '/staging/' : rootPath;
 		location.href = rootPath + '?content=' + content +'&cat=' + cat;
 
 	</script>
@@ -37,7 +39,7 @@
 
 						<a target="_blank" href="http://www.kymcolux.com/fr/" data-x="408" data-y="185" class="place"><img src="../img/worldwide/place-red.svg"></a>
 
-						<a target="_blank" href="http://www.kymco.com.cn/" data-x="765" data-y="206" class="place"><img src="../img/worldwide/place-red.svg"></a>
+						<a target="_blank" href="http://www.kymco.com.cn/" data-x="735" data-y="236" class="place"><img src="../img/worldwide/place-red.svg"></a>
 
 						<a target="_blank" href="http://www.kymcojp.com/" data-x="858" data-y="173" class="place"><img src="../img/worldwide/place-red.svg"></a>
 
@@ -53,9 +55,13 @@
 
 						<a target="_blank" href="http://www.kymco.com.ar/" data-x="244" data-y="447" class="place"><img src="../img/worldwide/place.svg"></a>
 
-						<a target="_blank" data-x="571" data-y="253" class="place disabled"><img src="../img/worldwide/place.svg"></a>
+						<a target="_blank" data-x="571" data-y="253" class="place"><img src="../img/worldwide/place.svg"></a>
 
-						<a data-x="298" data-y="357" class="place disabled"><img src="../img/worldwide/place.svg"></a>
+						<a data-x="298" data-y="357" class="place"><img src="../img/worldwide/place.svg"></a>
+
+						<!--台灣-->
+
+						<a target="_blank" href="http://www.kymco.com.tw/" data-x="780" data-y="260" class="place"><img src="../img/worldwide/place-red.svg"></a>
 						
 					</aside>
 				</figure>
@@ -126,16 +132,21 @@
 							<p><a target="_blank" href="http://www.kymco.com.ar/">Argentina</a></p>
 						</section>
 					</aside>
-					<!-- <aside class="place-info vertical-middle text-right fontsize-16 fontsize-xs-36">
+					<aside class="place-info vertical-middle text-right fontsize-16 fontsize-xs-36">
 						<section>
-							<p><a class="disabled" target="_blank">Iran</a></p>
+							<p><a target="_blank">Iran</a></p>
 						</section>
 					</aside>
 					<aside class="place-info vertical-middle text-right fontsize-16 fontsize-xs-36">
 						<section>
-							<p><a class="disabled" href="javascript:">Brazil</a></p>
+							<p><a target="_blank">Brazil</a></p>
 						</section>
-					</aside> -->
+					</aside>
+					<aside class="place-info vertical-middle text-right fontsize-16 fontsize-xs-36">
+						<section>
+							<p><a target="_blank">Head Taiwan</a></p>
+						</section>
+					</aside>
 				</aside>
 			</figure>
 		</section>

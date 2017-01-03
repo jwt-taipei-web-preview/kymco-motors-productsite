@@ -107,6 +107,48 @@ body {
 		}
 	}
 
+	.banner{
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		display: block;
+		top: 0;
+		left: 0;
+		background: rgba(0,0,0,0.8);
+		z-index: 100;
+		figure{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+		}
+
+		.close{
+			top: 0;
+			right: 0;
+			display: block;
+		}
+
+		&.dismissed{
+			@include animation(
+				dismiss 0.35s 1 linear forwards 0s
+			);
+		}
+	}
+
+}
+@include keyframes( dismiss )
+{
+	0% {
+		opacity: 1;
+	}
+	99% {
+		opacity: 0;
+		height: 100%;
+	}
+	100%{
+		opacity: 0;
+		height: 0;
+	}
 }
 
 html{

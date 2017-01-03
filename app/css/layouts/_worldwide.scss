@@ -113,9 +113,11 @@
 
 					&.on{
 						top: 0;
-						line-height: 1.5em;
 
-						@media screen and (max-width: 1280px) {
+						@media screen and (min-width: 769px) {
+							line-height: 1.5em;
+						}
+						@media screen and (min-width: 769px) and (max-width: 1280px) {
 							line-height: 1em;
 						}
 					}

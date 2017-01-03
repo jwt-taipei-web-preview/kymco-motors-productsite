@@ -15,6 +15,9 @@
 				background-size: 80%;
 				background-repeat: no-repeat;
 				background-position: center;
+				cursor: pointer;
+
+				padding-bottom: 2em;
 				img{
 					@include xsSubItem();
 					max-width: 100%;
@@ -24,9 +27,9 @@
 				}
 				figcaption{
 					color: #535353;
-					position: absolute;
-					bottom: 0;
-					margin-bottom: xsp(0);
+					position: relative;
+					// bottom: 0;
+					// margin-bottom: xsp(0);
 					left:0;
 					width: 100%;
 					line-height: 2em;
@@ -63,6 +66,10 @@
 					img{
 						transform: scale(1) translate(-2%,-2%);
 						transition-duration: 20s;
+					}
+					figcaption{
+						color: #c30d23;
+						transition-duration: 0.25s;
 					}
 				}
 				@media screen and (max-width: 768px) {

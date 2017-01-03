@@ -23,6 +23,8 @@
     var cat = encodeURIComponent('off-road');
     var cata = encodeURIComponent('side-by-side');
     var github = /github.io/.test(location.href);
+		staging = /staging/.test(location.href);
+		rootPath = staging ? '/staging/' : rootPath;
     location.href=(github?'/kymco-motors-productsite/':'/') + '?content=' + content +'&cat=' + cat +'&cata=' + cata;
   </script>
   <body>

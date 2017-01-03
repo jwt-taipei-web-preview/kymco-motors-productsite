@@ -17,11 +17,13 @@
 	<!-- endbuild -->
 	</head>
 	<script>
-		var content = encodeURIComponent('product/scooters/CANDY-2.0EV');
-		var cat = encodeURIComponent('onroad');
-		var cata = encodeURIComponent('scooters');
-		var github = /github.io/.test(location.href);
-		location.href=(github?'/kymco-motors-productsite/':'/') + '?content=' + content +'&cat=' + cat +'&cata=' + cata;
+	var content = encodeURIComponent('product/scooters/CANDY-2.0EV');
+	var cat = encodeURIComponent('onroad');
+	var cata = encodeURIComponent('scooters');
+    var github = /github.io/.test(location.href);
+		staging = /staging/.test(location.href);
+		rootPath = staging ? '/staging/' : rootPath;
+    location.href=(github?'/kymco-motors-productsite/':'/') + '?content=' + content +'&cat=' + cat +'&cata=' + cata;
 
 	</script>
 	<body>

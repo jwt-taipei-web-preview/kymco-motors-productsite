@@ -129,7 +129,7 @@ header {
 				background-image: url(../img/nav/youtube.svg);
 				background-size: 18px 14px;
 			}
-			&:nth-child(5){
+			&:nth-child(5), &:nth-child(6){
 				background-image: url(../img/nav/mail.svg);
 				background-size: 16px 13px;
 			}
@@ -225,7 +225,7 @@ header {
 				&:nth-child(3){
 					background-size: vwxs(33) vwxs(24);
 				}
-				&:nth-child(5){
+				&:nth-child(5),&:nth-child(6){
 					background-size: vwxs(30) vwxs(24);
 				}
 			}

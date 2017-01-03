@@ -17,11 +17,13 @@
 	<!-- endbuild -->
 	</head>
 	<script>
-		var content = encodeURIComponent('product/maxi-scooters/X-Town-300i-ABS_HERO');
-		var cat = encodeURIComponent('onroad');
-		var cata = encodeURIComponent('maxi-scooters');
-		var github = /github.io/.test(location.href);
-		location.href=(github?'/kymco-motors-productsite/':'/') + '?content=' + content +'&cat=' + cat +'&cata=' + cata;
+	var content = encodeURIComponent('product/maxi-scooters/X-Town-300i-ABS_HERO');
+	var cat = encodeURIComponent('onroad');
+	var cata = encodeURIComponent('maxi-scooters');
+    var github = /github.io/.test(location.href);
+		staging = /staging/.test(location.href);
+		rootPath = staging ? '/staging/' : rootPath;
+    location.href=(github?'/kymco-motors-productsite/':'/') + '?content=' + content +'&cat=' + cat +'&cata=' + cata;
 	</script>
 	<body>
 		<section role="main" class="product">
